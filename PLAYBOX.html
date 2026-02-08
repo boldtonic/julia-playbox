@@ -284,6 +284,249 @@
             touch-action: none;
         }
 
+        /* PAINT SUB-TABS */
+        .paint-sub-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .paint-sub-tab {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: white;
+            color: #666;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Comic Sans MS', 'Chalkboard', cursive, sans-serif;
+        }
+
+        .paint-sub-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .paint-sub-tab.active {
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: white;
+            box-shadow: 0 4px 20px rgba(255, 107, 157, 0.5);
+            transform: scale(1.05);
+        }
+
+        .paint-sub-tab .sub-tab-icon { font-size: 1.3rem; }
+
+        .paint-mode { display: none; }
+        .paint-mode.active { display: block; }
+
+        /* COLOR A PHOTO */
+        .photo-upload-area {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 60px 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 4px dashed #d0d0d0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-upload-area:hover,
+        .photo-upload-area.dragover {
+            border-color: var(--purple);
+            background: rgba(155, 89, 182, 0.05);
+            transform: scale(1.01);
+        }
+
+        .upload-content .upload-icon { font-size: 4rem; margin-bottom: 15px; }
+        .upload-content h3 { font-size: 1.4rem; color: var(--purple); margin-bottom: 8px; }
+        .upload-content p { color: #888; font-size: 1rem; }
+        .upload-hint { color: var(--pink) !important; font-weight: bold; margin-top: 10px !important; }
+
+        .sensitivity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 8px 15px;
+            border-radius: 25px;
+        }
+
+        .sensitivity-control label {
+            font-weight: bold;
+            color: #666;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* Floating Reference Thumbnail */
+        .reference-thumbnail {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 150px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+
+        .reference-thumbnail canvas {
+            width: 100%;
+            display: block;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .ref-thumb-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 10px;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .ref-thumb-close {
+            background: rgba(255,255,255,0.3);
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ref-toggle-btn {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: 'Comic Sans MS', 'Chalkboard', cursive, sans-serif;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .ref-toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* COLORING BOOK GALLERY */
+        .coloring-category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+            justify-content: center;
+            padding: 10px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .coloring-category-tab {
+            padding: 8px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Comic Sans MS', 'Chalkboard', cursive, sans-serif;
+        }
+
+        .coloring-category-tab:hover { border-color: var(--purple); transform: translateY(-2px); }
+        .coloring-category-tab.active { background: var(--purple); color: white; border-color: var(--purple); }
+
+        .coloring-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .coloring-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .coloring-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .coloring-card canvas {
+            width: 100%;
+            aspect-ratio: 1;
+            display: block;
+            background: white;
+        }
+
+        .coloring-card-label {
+            padding: 8px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .paint-sub-tabs { gap: 6px; padding: 8px; }
+            .paint-sub-tab { padding: 8px 12px; font-size: 0.85rem; gap: 5px; }
+            .paint-sub-tab .sub-tab-icon { font-size: 1.1rem; }
+            .photo-upload-area { padding: 30px 15px; }
+            .upload-content .upload-icon { font-size: 3rem; }
+            .upload-content h3 { font-size: 1.1rem; }
+            .reference-thumbnail { width: 100px; }
+            .sensitivity-control label { display: none; }
+            .coloring-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
+            .coloring-category-tabs { gap: 6px; padding: 8px; }
+            .coloring-category-tab { padding: 6px 10px; font-size: 0.8rem; }
+        }
+
+        @media (max-width: 400px) {
+            .paint-sub-tab { padding: 10px; font-size: 0; }
+            .paint-sub-tab .sub-tab-icon { font-size: 1.3rem; }
+        }
+
+        @media (min-width: 900px) {
+            .coloring-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+        }
+
         .header-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -3156,26 +3399,124 @@
     <!-- PAINT TAB -->
     <div class="tab-content" id="paintTab">
         <div class="paint-container">
-            <div class="paint-toolbar">
-                <div class="paint-colors" id="paintColors">
-                    <!-- Colors will be generated by JS -->
-                </div>
-                <div class="brush-size-control">
-                    <label>Brush:</label>
-                    <input type="range" class="brush-slider" id="brushSize" min="2" max="80" value="15">
-                    <div class="brush-preview">
-                        <div class="brush-dot" id="brushPreview"></div>
+            <!-- Paint Sub-Tabs -->
+            <div class="paint-sub-tabs">
+                <button class="paint-sub-tab active" onclick="switchPaintMode('freedraw', this)">
+                    <span class="sub-tab-icon">🖌️</span> Free Draw
+                </button>
+                <button class="paint-sub-tab" onclick="switchPaintMode('colorphoto', this)">
+                    <span class="sub-tab-icon">📸</span> Color a Photo
+                </button>
+                <button class="paint-sub-tab" onclick="switchPaintMode('coloringbook', this)">
+                    <span class="sub-tab-icon">📖</span> Coloring Book
+                </button>
+            </div>
+
+            <!-- MODE 1: Free Draw -->
+            <div class="paint-mode active" id="paintMode-freedraw">
+                <div class="paint-toolbar">
+                    <div class="paint-colors" id="paintColors"></div>
+                    <div class="brush-size-control">
+                        <label>Brush:</label>
+                        <input type="range" class="brush-slider" id="brushSize" min="2" max="80" value="15">
+                        <div class="brush-preview">
+                            <div class="brush-dot" id="brushPreview"></div>
+                        </div>
+                    </div>
+                    <div class="paint-actions">
+                        <button class="paint-btn eraser" id="eraserBtn" onclick="toggleEraser()">🧹 Eraser</button>
+                        <button class="paint-btn undo" onclick="undoPaint()">↩️ Undo</button>
+                        <button class="paint-btn clear" onclick="clearCanvas()">🗑️ Clear</button>
+                        <button class="paint-btn save" onclick="saveCanvas()">💾 Save</button>
                     </div>
                 </div>
-                <div class="paint-actions">
-                    <button class="paint-btn eraser" id="eraserBtn" onclick="toggleEraser()">🧹 Eraser</button>
-                    <button class="paint-btn undo" onclick="undoPaint()">↩️ Undo</button>
-                    <button class="paint-btn clear" onclick="clearCanvas()">🗑️ Clear</button>
-                    <button class="paint-btn save" onclick="saveCanvas()">💾 Save</button>
+                <div class="canvas-wrapper">
+                    <canvas id="paintCanvas"></canvas>
                 </div>
             </div>
-            <div class="canvas-wrapper">
-                <canvas id="paintCanvas"></canvas>
+
+            <!-- MODE 2: Color a Photo -->
+            <div class="paint-mode" id="paintMode-colorphoto">
+                <div id="photoUploadArea" class="photo-upload-area">
+                    <div class="upload-content">
+                        <div class="upload-icon">📸</div>
+                        <h3>Upload a Photo!</h3>
+                        <p>Drag & drop a photo here or click to choose one</p>
+                        <p class="upload-hint">It will turn into a coloring page! ✨</p>
+                        <input type="file" id="photoFileInput" accept="image/*" style="display:none">
+                    </div>
+                </div>
+                <div id="photoEditorArea" style="display:none;">
+                    <div class="paint-toolbar">
+                        <div class="paint-colors" id="photoPaintColors"></div>
+                        <div class="brush-size-control">
+                            <label>Brush:</label>
+                            <input type="range" class="brush-slider" id="photoBrushSize" min="2" max="80" value="15">
+                            <div class="brush-preview">
+                                <div class="brush-dot" id="photoBrushPreview"></div>
+                            </div>
+                        </div>
+                        <div class="sensitivity-control">
+                            <label>✏️ Detail:</label>
+                            <input type="range" class="brush-slider" id="sensitivitySlider" min="10" max="200" value="80">
+                        </div>
+                        <div class="paint-actions">
+                            <button class="paint-btn eraser" id="photoEraserBtn" onclick="togglePhotoEraser()">🧹 Eraser</button>
+                            <button class="paint-btn undo" onclick="undoPhotoCanvas()">↩️ Undo</button>
+                            <button class="paint-btn" style="background:var(--cyan);color:white;" onclick="reprocessPhoto()">🔄 Re-trace</button>
+                            <button class="paint-btn save" onclick="savePhotoCanvas()">💾 Save</button>
+                            <button class="paint-btn" style="background:var(--blue);color:white;" onclick="showPhotoUpload()">📸 New</button>
+                        </div>
+                    </div>
+                    <div class="canvas-wrapper" style="position:relative;">
+                        <canvas id="photoCanvas"></canvas>
+                        <div class="reference-thumbnail" id="photoRefThumb">
+                            <div class="ref-thumb-header">
+                                <span>🖼️ Original</span>
+                                <button class="ref-thumb-close" onclick="togglePhotoRef()">✕</button>
+                            </div>
+                            <canvas id="photoRefCanvas"></canvas>
+                        </div>
+                    </div>
+                    <button class="ref-toggle-btn" id="photoRefToggle" onclick="togglePhotoRef()">👁️ Hide Original</button>
+                </div>
+            </div>
+
+            <!-- MODE 3: Coloring Book Gallery -->
+            <div class="paint-mode" id="paintMode-coloringbook">
+                <div id="coloringGallery">
+                    <div class="coloring-category-tabs" id="coloringCategoryTabs"></div>
+                    <div class="coloring-grid" id="coloringGrid"></div>
+                </div>
+                <div id="coloringEditorArea" style="display:none;">
+                    <div class="paint-toolbar">
+                        <div class="paint-colors" id="coloringPaintColors"></div>
+                        <div class="brush-size-control">
+                            <label>Brush:</label>
+                            <input type="range" class="brush-slider" id="coloringBrushSize" min="2" max="80" value="15">
+                            <div class="brush-preview">
+                                <div class="brush-dot" id="coloringBrushPreview"></div>
+                            </div>
+                        </div>
+                        <div class="paint-actions">
+                            <button class="paint-btn eraser" id="coloringEraserBtn" onclick="toggleColoringEraser()">🧹 Eraser</button>
+                            <button class="paint-btn undo" onclick="undoColoringCanvas()">↩️ Undo</button>
+                            <button class="paint-btn" style="background:var(--cyan);color:white;" onclick="reloadColoringOutline()">🔄 Start Over</button>
+                            <button class="paint-btn save" onclick="saveColoringCanvas()">💾 Save</button>
+                            <button class="paint-btn" style="background:var(--blue);color:white;" onclick="backToColoringGallery()">📖 Gallery</button>
+                        </div>
+                    </div>
+                    <div class="canvas-wrapper" style="position:relative;">
+                        <canvas id="coloringCanvas"></canvas>
+                        <div class="reference-thumbnail" id="coloringRefThumb" style="display:none;">
+                            <div class="ref-thumb-header">
+                                <span>🎨 Reference</span>
+                                <button class="ref-thumb-close" onclick="toggleColoringRef()">✕</button>
+                            </div>
+                            <canvas id="coloringRefCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div><!-- END PAINT TAB -->
@@ -5323,9 +5664,30 @@
                 settingsToggle.style.display = 'none';
             }
 
-            // Resize paint canvas when switching to paint tab
+            // Resize appropriate paint canvas when switching to paint tab
             if (tabName === 'paint') {
-                setTimeout(resizePaintCanvas, 100);
+                if (currentPaintMode === 'freedraw') setTimeout(resizePaintCanvas, 100);
+                else if (currentPaintMode === 'colorphoto') setTimeout(resizePhotoCanvas, 100);
+                else if (currentPaintMode === 'coloringbook') setTimeout(resizeColoringCanvas, 100);
+            }
+        }
+
+        // ============================================
+        // PAINT MODE SWITCHING
+        // ============================================
+        let currentPaintMode = 'freedraw';
+
+        function switchPaintMode(mode, btn) {
+            currentPaintMode = mode;
+            document.querySelectorAll('.paint-sub-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.paint-mode').forEach(m => m.classList.remove('active'));
+            document.getElementById('paintMode-' + mode).classList.add('active');
+            if (mode === 'freedraw') setTimeout(resizePaintCanvas, 100);
+            else if (mode === 'colorphoto' && document.getElementById('photoEditorArea').style.display !== 'none') setTimeout(resizePhotoCanvas, 100);
+            else if (mode === 'coloringbook') {
+                if (document.getElementById('coloringEditorArea').style.display !== 'none') setTimeout(resizeColoringCanvas, 100);
+                else renderColoringGrid();
             }
         }
 
@@ -5546,6 +5908,3641 @@
             showStatus('Painting saved!');
         }
 
+        // ============================================
+        // SHARED DRAWING ENGINE
+        // ============================================
+        function createDrawingEngine(cfg) {
+            let isDrawing = false, lastX = 0, lastY = 0;
+            let currentColor = cfg.defaultColor || '#E74C3C';
+            let bSize = 15, isEraser = false;
+            let history = [], historyIdx = -1;
+
+            const engine = {
+                get canvas() { return document.getElementById(cfg.canvasId); },
+                get ctx() { const c = engine.canvas; return c ? c.getContext('2d') : null; },
+                getCoords(e) {
+                    const c = engine.canvas, rect = c.getBoundingClientRect();
+                    const sx = c.width / rect.width, sy = c.height / rect.height;
+                    if (e.touches) return { x: (e.touches[0].clientX - rect.left) * sx, y: (e.touches[0].clientY - rect.top) * sy };
+                    return { x: (e.clientX - rect.left) * sx, y: (e.clientY - rect.top) * sy };
+                },
+                startDrawing(e) {
+                    isDrawing = true;
+                    const coords = engine.getCoords(e);
+                    lastX = coords.x; lastY = coords.y;
+                    engine.ctx.beginPath();
+                    engine.ctx.arc(lastX, lastY, bSize / 2, 0, Math.PI * 2);
+                    engine.ctx.fillStyle = isEraser ? 'white' : currentColor;
+                    engine.ctx.fill();
+                },
+                draw(e) {
+                    if (!isDrawing) return;
+                    e.preventDefault();
+                    const coords = engine.getCoords(e);
+                    const ctx = engine.ctx;
+                    ctx.beginPath();
+                    ctx.moveTo(lastX, lastY);
+                    ctx.lineTo(coords.x, coords.y);
+                    ctx.strokeStyle = isEraser ? 'white' : currentColor;
+                    ctx.lineWidth = bSize;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+                    ctx.stroke();
+                    lastX = coords.x; lastY = coords.y;
+                },
+                stopDrawing() {
+                    if (isDrawing) { isDrawing = false; engine.saveToHistory(); }
+                },
+                saveToHistory() {
+                    history = history.slice(0, historyIdx + 1);
+                    history.push(engine.canvas.toDataURL());
+                    historyIdx++;
+                    if (history.length > 30) { history.shift(); historyIdx--; }
+                },
+                undo() {
+                    if (historyIdx > 0) {
+                        historyIdx--;
+                        const img = new Image();
+                        img.onload = () => { engine.ctx.fillStyle = 'white'; engine.ctx.fillRect(0, 0, engine.canvas.width, engine.canvas.height); engine.ctx.drawImage(img, 0, 0); };
+                        img.src = history[historyIdx];
+                        showStatus('Undo!');
+                    }
+                },
+                save(prefix) {
+                    const link = document.createElement('a');
+                    link.download = prefix + Date.now() + '.png';
+                    link.href = engine.canvas.toDataURL();
+                    link.click();
+                    showStatus('Saved!');
+                },
+                selectColor(color, btn) {
+                    currentColor = color;
+                    isEraser = false;
+                    if (cfg.eraserBtnId) document.getElementById(cfg.eraserBtnId).classList.remove('active');
+                    const container = document.getElementById(cfg.colorsId);
+                    container.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    engine.updatePreview();
+                },
+                toggleEraser() {
+                    isEraser = !isEraser;
+                    if (cfg.eraserBtnId) document.getElementById(cfg.eraserBtnId).classList.toggle('active', isEraser);
+                    engine.updatePreview();
+                },
+                updatePreview() {
+                    const preview = document.getElementById(cfg.previewId);
+                    if (!preview) return;
+                    const size = Math.min(bSize, 40);
+                    preview.style.width = size + 'px';
+                    preview.style.height = size + 'px';
+                    preview.style.background = isEraser ? '#f0f0f0' : currentColor;
+                    preview.style.border = isEraser ? '2px dashed #999' : 'none';
+                },
+                initColors() {
+                    const container = document.getElementById(cfg.colorsId);
+                    if (!container) return;
+                    paintColors.forEach((color, i) => {
+                        const btn = document.createElement('button');
+                        btn.className = 'color-btn' + (color === (cfg.defaultColor || '#333333') ? ' active' : '');
+                        btn.style.background = color;
+                        if (color === '#FFFFFF') btn.style.border = '2px solid #ddd';
+                        btn.onclick = () => engine.selectColor(color, btn);
+                        container.appendChild(btn);
+                    });
+                },
+                initBrushSlider() {
+                    const slider = document.getElementById(cfg.brushSliderId);
+                    if (!slider) return;
+                    slider.oninput = () => { bSize = parseInt(slider.value); engine.updatePreview(); };
+                    engine.updatePreview();
+                },
+                setupEvents() {
+                    const c = engine.canvas;
+                    if (!c) return;
+                    c.addEventListener('mousedown', (e) => engine.startDrawing(e));
+                    c.addEventListener('mousemove', (e) => engine.draw(e));
+                    c.addEventListener('mouseup', () => engine.stopDrawing());
+                    c.addEventListener('mouseout', () => engine.stopDrawing());
+                    c.addEventListener('touchstart', (e) => { e.preventDefault(); engine.startDrawing(e); }, { passive: false });
+                    c.addEventListener('touchmove', (e) => { e.preventDefault(); engine.draw(e); }, { passive: false });
+                    c.addEventListener('touchend', () => engine.stopDrawing());
+                    c.addEventListener('touchcancel', () => engine.stopDrawing());
+                },
+                resize() {
+                    const c = engine.canvas;
+                    if (!c) return;
+                    const wrapper = c.parentElement;
+                    const rect = wrapper.getBoundingClientRect();
+                    const tempCanvas = document.createElement('canvas');
+                    tempCanvas.width = c.width; tempCanvas.height = c.height;
+                    tempCanvas.getContext('2d').drawImage(c, 0, 0);
+                    c.width = rect.width - 30;
+                    c.height = Math.max(400, window.innerHeight - 280);
+                    engine.ctx.fillStyle = 'white';
+                    engine.ctx.fillRect(0, 0, c.width, c.height);
+                    engine.ctx.drawImage(tempCanvas, 0, 0);
+                },
+                resetHistory() { history = []; historyIdx = -1; },
+                clearAndDraw(drawFn) {
+                    const c = engine.canvas;
+                    engine.ctx.fillStyle = 'white';
+                    engine.ctx.fillRect(0, 0, c.width, c.height);
+                    if (drawFn) drawFn(engine.ctx, c.width, c.height);
+                    history = [c.toDataURL()];
+                    historyIdx = 0;
+                }
+            };
+            return engine;
+        }
+
+        // ============================================
+        // COLOR A PHOTO
+        // ============================================
+        let photoOriginalImage = null;
+        let photoRefVisible = true;
+        let photoSensitivity = 80;
+        const photoEngine = createDrawingEngine({
+            canvasId: 'photoCanvas', colorsId: 'photoPaintColors',
+            brushSliderId: 'photoBrushSize', previewId: 'photoBrushPreview',
+            eraserBtnId: 'photoEraserBtn', defaultColor: '#E74C3C'
+        });
+
+        function initPhotoUpload() {
+            const uploadArea = document.getElementById('photoUploadArea');
+            const fileInput = document.getElementById('photoFileInput');
+            uploadArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', (e) => { if (e.target.files.length > 0) processPhotoFile(e.target.files[0]); });
+            uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+            uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault(); uploadArea.classList.remove('dragover');
+                if (e.dataTransfer.files.length > 0) processPhotoFile(e.dataTransfer.files[0]);
+            });
+            document.getElementById('sensitivitySlider').addEventListener('input', (e) => {
+                photoSensitivity = parseInt(e.target.value);
+                if (photoOriginalImage) reprocessPhoto();
+            });
+            photoEngine.initColors();
+            photoEngine.initBrushSlider();
+        }
+
+        function processPhotoFile(file) {
+            if (!file.type.startsWith('image/')) { showStatus('Please upload an image!'); return; }
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => { photoOriginalImage = img; showPhotoEditor(); processImageToOutline(img); };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function showPhotoEditor() {
+            document.getElementById('photoUploadArea').style.display = 'none';
+            document.getElementById('photoEditorArea').style.display = 'block';
+            resizePhotoCanvas();
+            photoEngine.setupEvents();
+            showStatus('Photo loaded! Color it! ✨');
+        }
+
+        function showPhotoUpload() {
+            document.getElementById('photoUploadArea').style.display = 'block';
+            document.getElementById('photoEditorArea').style.display = 'none';
+            photoOriginalImage = null;
+            photoEngine.resetHistory();
+        }
+
+        function resizePhotoCanvas() {
+            const c = document.getElementById('photoCanvas');
+            if (!c) return;
+            const wrapper = c.parentElement;
+            const rect = wrapper.getBoundingClientRect();
+            c.width = rect.width - 30;
+            c.height = Math.max(400, window.innerHeight - 280);
+            if (photoOriginalImage) processImageToOutline(photoOriginalImage);
+        }
+
+        function processImageToOutline(img) {
+            const c = document.getElementById('photoCanvas');
+            const ctx = c.getContext('2d');
+            const cw = c.width, ch = c.height;
+            // Scale image to fit
+            const maxDim = 800;
+            let iw = img.width, ih = img.height;
+            if (iw > maxDim || ih > maxDim) {
+                const r = Math.min(maxDim / iw, maxDim / ih);
+                iw = Math.round(iw * r); ih = Math.round(ih * r);
+            }
+            const scale = Math.min(cw / iw, ch / ih);
+            const sw = iw * scale, sh = ih * scale;
+            const ox = (cw - sw) / 2, oy = (ch - sh) / 2;
+
+            const hc = document.createElement('canvas');
+            hc.width = cw; hc.height = ch;
+            const hCtx = hc.getContext('2d');
+            hCtx.fillStyle = 'white';
+            hCtx.fillRect(0, 0, cw, ch);
+            hCtx.drawImage(img, ox, oy, sw, sh);
+
+            const imageData = hCtx.getImageData(0, 0, cw, ch);
+            const data = imageData.data;
+            const gray = new Float32Array(cw * ch);
+            for (let i = 0; i < cw * ch; i++) {
+                gray[i] = 0.299 * data[i * 4] + 0.587 * data[i * 4 + 1] + 0.114 * data[i * 4 + 2];
+            }
+
+            // Gaussian blur
+            const blurred = gaussianBlur(gray, cw, ch);
+            // Sobel edge detection
+            const edges = sobelEdge(blurred, cw, ch);
+            // Threshold
+            const threshold = 255 - photoSensitivity;
+            const output = hCtx.createImageData(cw, ch);
+            for (let i = 0; i < cw * ch; i++) {
+                const val = edges[i] > threshold ? 0 : 255;
+                output.data[i * 4] = val; output.data[i * 4 + 1] = val; output.data[i * 4 + 2] = val; output.data[i * 4 + 3] = 255;
+            }
+            ctx.putImageData(output, 0, 0);
+
+            // Reference thumbnail
+            const refC = document.getElementById('photoRefCanvas');
+            refC.width = 150; refC.height = Math.round(150 * (ch / cw));
+            refC.getContext('2d').drawImage(img, 0, 0, refC.width, refC.height);
+
+            photoEngine.resetHistory();
+            photoEngine.saveToHistory();
+        }
+
+        function gaussianBlur(gray, w, h) {
+            const k = [1,2,1,2,4,2,1,2,1], result = new Float32Array(w * h);
+            for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++) {
+                let s = 0, ki = 0;
+                for (let ky = -1; ky <= 1; ky++) for (let kx = -1; kx <= 1; kx++) s += gray[(y + ky) * w + (x + kx)] * k[ki++];
+                result[y * w + x] = s / 16;
+            }
+            return result;
+        }
+
+        function sobelEdge(gray, w, h) {
+            const gxk = [-1,0,1,-2,0,2,-1,0,1], gyk = [-1,-2,-1,0,0,0,1,2,1];
+            const edges = new Float32Array(w * h);
+            for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++) {
+                let gx = 0, gy = 0, ki = 0;
+                for (let ky = -1; ky <= 1; ky++) for (let kx = -1; kx <= 1; kx++) {
+                    const v = gray[(y + ky) * w + (x + kx)];
+                    gx += v * gxk[ki]; gy += v * gyk[ki]; ki++;
+                }
+                edges[y * w + x] = Math.sqrt(gx * gx + gy * gy);
+            }
+            let max = 0;
+            for (let i = 0; i < edges.length; i++) if (edges[i] > max) max = edges[i];
+            if (max > 0) for (let i = 0; i < edges.length; i++) edges[i] = (edges[i] / max) * 255;
+            return edges;
+        }
+
+        function reprocessPhoto() {
+            if (photoOriginalImage) { processImageToOutline(photoOriginalImage); showStatus('Outlines redrawn!'); }
+        }
+        function togglePhotoEraser() { photoEngine.toggleEraser(); }
+        function undoPhotoCanvas() { photoEngine.undo(); }
+        function savePhotoCanvas() { photoEngine.save('julia-coloring-'); }
+        function togglePhotoRef() {
+            photoRefVisible = !photoRefVisible;
+            document.getElementById('photoRefThumb').style.display = photoRefVisible ? 'block' : 'none';
+            document.getElementById('photoRefToggle').textContent = photoRefVisible ? '👁️ Hide Original' : '👁️ Show Original';
+        }
+
+        // ============================================
+        // COLORING BOOK
+        // ============================================
+        let currentColoringCategory = 'animals';
+        let currentColoringOutline = null;
+        let coloringRefVisible = false;
+
+        const coloringEngine = createDrawingEngine({
+            canvasId: 'coloringCanvas', colorsId: 'coloringPaintColors',
+            brushSliderId: 'coloringBrushSize', previewId: 'coloringBrushPreview',
+            eraserBtnId: 'coloringEraserBtn', defaultColor: '#E74C3C'
+        });
+
+        const coloringCategories = {
+            animals: { name: '🐾 Animals', color: '#FF6B9D', items: [
+                { id: 'cat', name: 'Cat', emoji: '🐱', draw: drawCat },
+                { id: 'dog', name: 'Dog', emoji: '🐶', draw: drawDog },
+                { id: 'butterfly', name: 'Butterfly', emoji: '🦋', draw: drawButterfly },
+                { id: 'fish', name: 'Fish', emoji: '🐟', draw: drawFish },
+                { id: 'rabbit', name: 'Rabbit', emoji: '🐰', draw: drawRabbit },
+                { id: 'bird', name: 'Bird', emoji: '🐦', draw: drawBird }
+            ]},
+            nature: { name: '🌿 Nature', color: '#2ECC71', items: [
+                { id: 'tree', name: 'Tree', emoji: '🌳', draw: drawTree },
+                { id: 'flower', name: 'Flower', emoji: '🌸', draw: drawFlower },
+                { id: 'sun', name: 'Sun', emoji: '☀️', draw: drawSun },
+                { id: 'cloud', name: 'Cloud', emoji: '☁️', draw: drawCloud },
+                { id: 'mountain', name: 'Mountain', emoji: '🏔️', draw: drawMountain },
+                { id: 'rainbow', name: 'Rainbow', emoji: '🌈', draw: drawRainbow }
+            ]},
+            vehicles: { name: '🚗 Vehicles', color: '#3498DB', items: [
+                { id: 'car', name: 'Car', emoji: '🚗', draw: drawCar },
+                { id: 'boat', name: 'Boat', emoji: '⛵', draw: drawBoat },
+                { id: 'rocket', name: 'Rocket', emoji: '🚀', draw: drawRocket },
+                { id: 'airplane', name: 'Airplane', emoji: '✈️', draw: drawAirplane },
+                { id: 'train', name: 'Train', emoji: '🚂', draw: drawTrain },
+                { id: 'bicycle', name: 'Bicycle', emoji: '🚲', draw: drawBicycle }
+            ]},
+            fantasy: { name: '🏰 Fantasy', color: '#9B59B6', items: [
+                { id: 'castle', name: 'Castle', emoji: '🏰', draw: drawCastle },
+                { id: 'crown', name: 'Crown', emoji: '👑', draw: drawCrown },
+                { id: 'unicorn', name: 'Unicorn', emoji: '🦄', draw: drawUnicorn },
+                { id: 'star', name: 'Star', emoji: '⭐', draw: drawStar },
+                { id: 'dragon', name: 'Dragon', emoji: '🐉', draw: drawDragon },
+                { id: 'fairy', name: 'Fairy', emoji: '🧚', draw: drawFairy }
+            ]},
+            food: { name: '🍕 Food', color: '#E67E22', items: [
+                { id: 'icecream', name: 'Ice Cream', emoji: '🍦', draw: drawIceCream },
+                { id: 'pizza', name: 'Pizza', emoji: '🍕', draw: drawPizza },
+                { id: 'cake', name: 'Cake', emoji: '🎂', draw: drawCake },
+                { id: 'apple', name: 'Apple', emoji: '🍎', draw: drawApple },
+                { id: 'cupcake', name: 'Cupcake', emoji: '🧁', draw: drawCupcake },
+                { id: 'candy', name: 'Candy', emoji: '🍬', draw: drawCandy }
+            ]},
+            sea: { name: '🌊 Sea', color: '#1ABC9C', items: [
+                { id: 'whale', name: 'Whale', emoji: '🐋', draw: drawWhale },
+                { id: 'octopus', name: 'Octopus', emoji: '🐙', draw: drawOctopus },
+                { id: 'seahorse', name: 'Seahorse', emoji: '🌊', draw: drawSeahorse },
+                { id: 'starfish', name: 'Starfish', emoji: '⭐', draw: drawStarfish },
+                { id: 'turtle', name: 'Turtle', emoji: '🐢', draw: drawTurtle },
+                { id: 'shell', name: 'Shell', emoji: '🐚', draw: drawShell }
+            ]},
+            space: { name: '🚀 Space', color: '#34495E', items: [
+                { id: 'planet', name: 'Planet', emoji: '🪐', draw: drawPlanet },
+                { id: 'astronaut', name: 'Astronaut', emoji: '👨‍🚀', draw: drawAstronaut },
+                { id: 'ufo', name: 'UFO', emoji: '🛸', draw: drawUfo },
+                { id: 'moon', name: 'Moon', emoji: '🌙', draw: drawMoon },
+                { id: 'satellite', name: 'Satellite', emoji: '🛰️', draw: drawSatellite },
+                { id: 'comet', name: 'Comet', emoji: '☄️', draw: drawComet }
+            ]},
+            fun: { name: '🎀 Fun', color: '#FF6B9D', items: [
+                { id: 'balloon', name: 'Balloon', emoji: '🎈', draw: drawBalloon },
+                { id: 'heart', name: 'Heart', emoji: '❤️', draw: drawHeart },
+                { id: 'guitar', name: 'Guitar', emoji: '🎸', draw: drawGuitar },
+                { id: 'present', name: 'Present', emoji: '🎁', draw: drawPresent },
+                { id: 'kite', name: 'Kite', emoji: '🪁', draw: drawKite },
+                { id: 'teddy', name: 'Teddy Bear', emoji: '🧸', draw: drawTeddy }
+            ]}
+        };
+
+        function renderColoringCategoryTabs() {
+            const container = document.getElementById('coloringCategoryTabs');
+            container.innerHTML = Object.keys(coloringCategories).map(key => {
+                const cat = coloringCategories[key];
+                const label = cat.name.split(' ').slice(1).join(' ');
+                return '<button class="coloring-category-tab' + (key === currentColoringCategory ? ' active' : '') +
+                    '" onclick="switchColoringCategory(\'' + key + '\', this)">' + cat.name.split(' ')[0] + ' ' + label + '</button>';
+            }).join('');
+        }
+
+        function switchColoringCategory(key, btn) {
+            currentColoringCategory = key;
+            document.querySelectorAll('.coloring-category-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            renderColoringGrid();
+        }
+
+        function renderColoringGrid() {
+            const container = document.getElementById('coloringGrid');
+            const cat = coloringCategories[currentColoringCategory];
+            container.innerHTML = cat.items.map((item, i) =>
+                '<div class="coloring-card" onclick="openColoringPage(\'' + currentColoringCategory + '\',' + i + ')">' +
+                '<canvas id="thumb-' + item.id + '" width="140" height="140"></canvas>' +
+                '<div class="coloring-card-label">' + item.emoji + ' ' + item.name + '</div></div>'
+            ).join('');
+            // Draw thumbnails
+            cat.items.forEach(item => {
+                const tc = document.getElementById('thumb-' + item.id);
+                if (tc) {
+                    const tCtx = tc.getContext('2d');
+                    tCtx.fillStyle = 'white';
+                    tCtx.fillRect(0, 0, 140, 140);
+                    item.draw(tCtx, 140, 140);
+                }
+            });
+        }
+
+        function openColoringPage(catKey, idx) {
+            const item = coloringCategories[catKey].items[idx];
+            currentColoringOutline = item;
+            document.getElementById('coloringGallery').style.display = 'none';
+            document.getElementById('coloringEditorArea').style.display = 'block';
+            resizeColoringCanvas();
+            coloringEngine.setupEvents();
+            coloringEngine.clearAndDraw(item.draw);
+            showStatus('Color the ' + item.name + '!');
+        }
+
+        function resizeColoringCanvas() {
+            const c = document.getElementById('coloringCanvas');
+            if (!c) return;
+            const wrapper = c.parentElement;
+            const rect = wrapper.getBoundingClientRect();
+            c.width = rect.width - 30;
+            c.height = Math.max(400, window.innerHeight - 280);
+            if (currentColoringOutline) {
+                const ctx = c.getContext('2d');
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, c.width, c.height);
+                currentColoringOutline.draw(ctx, c.width, c.height);
+            }
+        }
+
+        function reloadColoringOutline() {
+            if (currentColoringOutline) { coloringEngine.clearAndDraw(currentColoringOutline.draw); showStatus('Starting fresh!'); }
+        }
+
+        function backToColoringGallery() {
+            document.getElementById('coloringGallery').style.display = 'block';
+            document.getElementById('coloringEditorArea').style.display = 'none';
+            currentColoringOutline = null;
+            coloringEngine.resetHistory();
+            renderColoringGrid();
+        }
+
+        function toggleColoringEraser() { coloringEngine.toggleEraser(); }
+        function undoColoringCanvas() { coloringEngine.undo(); }
+        function saveColoringCanvas() { coloringEngine.save('julia-coloring-book-'); }
+        function toggleColoringRef() {
+            coloringRefVisible = !coloringRefVisible;
+            document.getElementById('coloringRefThumb').style.display = coloringRefVisible ? 'block' : 'none';
+        }
+
+
+        // ============================================
+        // COLORING BOOK OUTLINES (48 drawings)
+        // ============================================
+        function drawCat(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Body oval
+          ctx.beginPath();
+          ctx.ellipse(cx, cy + s * 0.3, s * 0.5, s * 0.4, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Head
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.35, s * 0.35, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Left ear
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.28, cy - s * 0.6);
+          ctx.lineTo(cx - s * 0.4, cy - s * 0.95);
+          ctx.lineTo(cx - s * 0.08, cy - s * 0.65);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Right ear
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.28, cy - s * 0.6);
+          ctx.lineTo(cx + s * 0.4, cy - s * 0.95);
+          ctx.lineTo(cx + s * 0.08, cy - s * 0.65);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Eyes
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.12, cy - s * 0.4, s * 0.045, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.12, cy - s * 0.4, s * 0.045, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Nose
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.25);
+          ctx.lineTo(cx - s * 0.04, cy - s * 0.2);
+          ctx.lineTo(cx + s * 0.04, cy - s * 0.2);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Whiskers
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.1, cy - s * 0.22);
+          ctx.lineTo(cx - s * 0.45, cy - s * 0.3);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.1, cy - s * 0.18);
+          ctx.lineTo(cx - s * 0.45, cy - s * 0.15);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.1, cy - s * 0.22);
+          ctx.lineTo(cx + s * 0.45, cy - s * 0.3);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.1, cy - s * 0.18);
+          ctx.lineTo(cx + s * 0.45, cy - s * 0.15);
+          ctx.stroke();
+
+          // Tail
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.45, cy + s * 0.4);
+          ctx.bezierCurveTo(cx + s * 0.8, cy + s * 0.1, cx + s * 0.9, cy - s * 0.2, cx + s * 0.65, cy - s * 0.1);
+          ctx.stroke();
+        }
+
+        function drawDog(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Body
+          ctx.beginPath();
+          ctx.ellipse(cx, cy + s * 0.25, s * 0.55, s * 0.4, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Head
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.05, cy - s * 0.35, s * 0.32, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Snout
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.05, cy - s * 0.15, s * 0.15, s * 0.1, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Nose
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.05, cy - s * 0.18, s * 0.04, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Eyes
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.15, cy - s * 0.42, s * 0.04, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.08, cy - s * 0.42, s * 0.04, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Left floppy ear
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.3, cy - s * 0.5);
+          ctx.bezierCurveTo(cx - s * 0.55, cy - s * 0.45, cx - s * 0.6, cy - s * 0.1, cx - s * 0.38, cy - s * 0.08);
+          ctx.stroke();
+
+          // Right floppy ear
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.22, cy - s * 0.55);
+          ctx.bezierCurveTo(cx + s * 0.48, cy - s * 0.5, cx + s * 0.52, cy - s * 0.15, cx + s * 0.32, cy - s * 0.1);
+          ctx.stroke();
+
+          // Legs
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.3, cy + s * 0.55);
+          ctx.lineTo(cx - s * 0.3, cy + s * 0.85);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.1, cy + s * 0.6);
+          ctx.lineTo(cx - s * 0.1, cy + s * 0.85);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy + s * 0.6);
+          ctx.lineTo(cx + s * 0.15, cy + s * 0.85);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.35, cy + s * 0.55);
+          ctx.lineTo(cx + s * 0.35, cy + s * 0.85);
+          ctx.stroke();
+
+          // Tail
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.5, cy + s * 0.05);
+          ctx.bezierCurveTo(cx + s * 0.75, cy - s * 0.2, cx + s * 0.85, cy - s * 0.4, cx + s * 0.7, cy - s * 0.5);
+          ctx.stroke();
+        }
+
+        function drawButterfly(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Body
+          ctx.beginPath();
+          ctx.ellipse(cx, cy, s * 0.06, s * 0.45, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Top-left wing
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.15);
+          ctx.bezierCurveTo(cx - s * 0.4, cy - s * 0.8, cx - s * 0.9, cy - s * 0.5, cx - s * 0.05, cy - s * 0.05);
+          ctx.stroke();
+
+          // Top-right wing
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.15);
+          ctx.bezierCurveTo(cx + s * 0.4, cy - s * 0.8, cx + s * 0.9, cy - s * 0.5, cx + s * 0.05, cy - s * 0.05);
+          ctx.stroke();
+
+          // Bottom-left wing
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.05);
+          ctx.bezierCurveTo(cx - s * 0.35, cy + s * 0.1, cx - s * 0.7, cy + s * 0.5, cx - s * 0.05, cy + s * 0.25);
+          ctx.stroke();
+
+          // Bottom-right wing
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.05);
+          ctx.bezierCurveTo(cx + s * 0.35, cy + s * 0.1, cx + s * 0.7, cy + s * 0.5, cx + s * 0.05, cy + s * 0.25);
+          ctx.stroke();
+
+          // Wing inner circles (decorations)
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.35, cy - s * 0.3, s * 0.1, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.35, cy - s * 0.3, s * 0.1, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.28, cy + s * 0.2, s * 0.07, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.28, cy + s * 0.2, s * 0.07, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Antennae
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.02, cy - s * 0.4);
+          ctx.bezierCurveTo(cx - s * 0.15, cy - s * 0.7, cx - s * 0.25, cy - s * 0.8, cx - s * 0.3, cy - s * 0.85);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.3, cy - s * 0.85, s * 0.03, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.02, cy - s * 0.4);
+          ctx.bezierCurveTo(cx + s * 0.15, cy - s * 0.7, cx + s * 0.25, cy - s * 0.8, cx + s * 0.3, cy - s * 0.85);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.3, cy - s * 0.85, s * 0.03, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        function drawFish(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Body oval
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.05, cy, s * 0.6, s * 0.35, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Tail fin
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.5, cy - s * 0.1);
+          ctx.lineTo(cx + s * 0.85, cy - s * 0.35);
+          ctx.lineTo(cx + s * 0.85, cy + s * 0.35);
+          ctx.lineTo(cx + s * 0.5, cy + s * 0.1);
+          ctx.stroke();
+
+          // Dorsal fin
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.15, cy - s * 0.35);
+          ctx.bezierCurveTo(cx - s * 0.05, cy - s * 0.7, cx + s * 0.25, cy - s * 0.65, cx + s * 0.2, cy - s * 0.32);
+          ctx.stroke();
+
+          // Eye
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.3, cy - s * 0.05, s * 0.06, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.3, cy - s * 0.05, s * 0.03, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Mouth
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.58, cy + s * 0.02, s * 0.08, -0.4, 0.4);
+          ctx.stroke();
+
+          // Scales pattern
+          for (let i = 0; i < 3; i++) {
+            ctx.beginPath();
+            ctx.arc(cx - s * 0.1 + i * s * 0.18, cy, s * 0.12, 0.3, Math.PI - 0.3);
+            ctx.stroke();
+          }
+
+          // Bottom fin
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.3);
+          ctx.bezierCurveTo(cx + s * 0.05, cy + s * 0.55, cx + s * 0.2, cy + s * 0.5, cx + s * 0.15, cy + s * 0.32);
+          ctx.stroke();
+        }
+
+        function drawRabbit(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Body
+          ctx.beginPath();
+          ctx.ellipse(cx, cy + s * 0.3, s * 0.45, s * 0.4, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Head
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.25, s * 0.3, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Left ear
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.18, cy - s * 0.75, s * 0.08, s * 0.3, -0.15, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Left ear inner
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.18, cy - s * 0.75, s * 0.04, s * 0.2, -0.15, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Right ear
+          ctx.beginPath();
+          ctx.ellipse(cx + s * 0.18, cy - s * 0.75, s * 0.08, s * 0.3, 0.15, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Right ear inner
+          ctx.beginPath();
+          ctx.ellipse(cx + s * 0.18, cy - s * 0.75, s * 0.04, s * 0.2, 0.15, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Eyes
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.1, cy - s * 0.3, s * 0.04, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.1, cy - s * 0.3, s * 0.04, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Nose
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.15);
+          ctx.lineTo(cx - s * 0.04, cy - s * 0.11);
+          ctx.lineTo(cx + s * 0.04, cy - s * 0.11);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Whiskers
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.08, cy - s * 0.12);
+          ctx.lineTo(cx - s * 0.4, cy - s * 0.18);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.08, cy - s * 0.08);
+          ctx.lineTo(cx - s * 0.4, cy - s * 0.05);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.08, cy - s * 0.12);
+          ctx.lineTo(cx + s * 0.4, cy - s * 0.18);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.08, cy - s * 0.08);
+          ctx.lineTo(cx + s * 0.4, cy - s * 0.05);
+          ctx.stroke();
+
+          // Fluffy tail
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.4, cy + s * 0.35, s * 0.12, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        function drawBird(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Body
+          ctx.beginPath();
+          ctx.ellipse(cx, cy + s * 0.1, s * 0.45, s * 0.3, -0.15, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Head
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.35, cy - s * 0.2, s * 0.22, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Eye
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.4, cy - s * 0.25, s * 0.04, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Beak
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.55, cy - s * 0.2);
+          ctx.lineTo(cx - s * 0.75, cy - s * 0.15);
+          ctx.lineTo(cx - s * 0.55, cy - s * 0.12);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Wing
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.05, cy - s * 0.05);
+          ctx.bezierCurveTo(cx + s * 0.15, cy - s * 0.35, cx + s * 0.45, cy - s * 0.3, cx + s * 0.35, cy + s * 0.05);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.35, cy + s * 0.05);
+          ctx.bezierCurveTo(cx + s * 0.25, cy - s * 0.1, cx + s * 0.1, cy - s * 0.05, cx - s * 0.05, cy + s * 0.1);
+          ctx.stroke();
+
+          // Tail feathers
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.4, cy + s * 0.0);
+          ctx.lineTo(cx + s * 0.75, cy - s * 0.15);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.42, cy + s * 0.07);
+          ctx.lineTo(cx + s * 0.8, cy + s * 0.0);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.4, cy + s * 0.14);
+          ctx.lineTo(cx + s * 0.75, cy + s * 0.15);
+          ctx.stroke();
+
+          // Legs
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.1, cy + s * 0.35);
+          ctx.lineTo(cx - s * 0.15, cy + s * 0.65);
+          ctx.lineTo(cx - s * 0.28, cy + s * 0.7);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.15, cy + s * 0.65);
+          ctx.lineTo(cx - s * 0.05, cy + s * 0.72);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.05, cy + s * 0.37);
+          ctx.lineTo(cx + s * 0.0, cy + s * 0.65);
+          ctx.lineTo(cx - s * 0.12, cy + s * 0.7);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.0, cy + s * 0.65);
+          ctx.lineTo(cx + s * 0.1, cy + s * 0.72);
+          ctx.stroke();
+        }
+
+        function drawTree(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Trunk
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.12, cy + s * 0.9);
+          ctx.lineTo(cx - s * 0.12, cy + s * 0.1);
+          ctx.lineTo(cx + s * 0.12, cy + s * 0.1);
+          ctx.lineTo(cx + s * 0.12, cy + s * 0.9);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Canopy - three overlapping circles
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.35, cy - s * 0.15, s * 0.4, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.35, cy - s * 0.15, s * 0.4, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.5, s * 0.42, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Ground line
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.7, cy + s * 0.9);
+          ctx.lineTo(cx + s * 0.7, cy + s * 0.9);
+          ctx.stroke();
+        }
+
+        function drawFlower(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Stem
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.15);
+          ctx.lineTo(cx, cy + s * 0.9);
+          ctx.stroke();
+
+          // Left leaf
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.5);
+          ctx.bezierCurveTo(cx - s * 0.15, cy + s * 0.35, cx - s * 0.4, cy + s * 0.35, cx - s * 0.35, cy + s * 0.5);
+          ctx.bezierCurveTo(cx - s * 0.3, cy + s * 0.6, cx - s * 0.1, cy + s * 0.55, cx, cy + s * 0.5);
+          ctx.stroke();
+
+          // Right leaf
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.65);
+          ctx.bezierCurveTo(cx + s * 0.15, cy + s * 0.5, cx + s * 0.4, cy + s * 0.5, cx + s * 0.35, cy + s * 0.65);
+          ctx.bezierCurveTo(cx + s * 0.3, cy + s * 0.75, cx + s * 0.1, cy + s * 0.7, cx, cy + s * 0.65);
+          ctx.stroke();
+
+          // Center circle
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.15, s * 0.15, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // 6 petals
+          for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI * 2) / 6 - Math.PI / 2;
+            const petalCx = cx + Math.cos(angle) * s * 0.32;
+            const petalCy = cy - s * 0.15 + Math.sin(angle) * s * 0.32;
+            ctx.beginPath();
+            ctx.ellipse(petalCx, petalCy, s * 0.18, s * 0.12, angle, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+
+        function drawSun(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Center circle
+          ctx.beginPath();
+          ctx.arc(cx, cy, s * 0.35, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // 12 triangular rays
+          for (let i = 0; i < 12; i++) {
+            const angle = (i * Math.PI * 2) / 12;
+            const innerR = s * 0.38;
+            const outerR = s * 0.7;
+            const halfSpread = Math.PI / 24;
+
+            const tipX = cx + Math.cos(angle) * outerR;
+            const tipY = cy + Math.sin(angle) * outerR;
+            const leftX = cx + Math.cos(angle - halfSpread) * innerR;
+            const leftY = cy + Math.sin(angle - halfSpread) * innerR;
+            const rightX = cx + Math.cos(angle + halfSpread) * innerR;
+            const rightY = cy + Math.sin(angle + halfSpread) * innerR;
+
+            ctx.beginPath();
+            ctx.moveTo(leftX, leftY);
+            ctx.lineTo(tipX, tipY);
+            ctx.lineTo(rightX, rightY);
+            ctx.closePath();
+            ctx.stroke();
+          }
+        }
+
+        function drawCloud(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Flat bottom
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.65, cy + s * 0.15);
+          ctx.lineTo(cx + s * 0.65, cy + s * 0.15);
+          ctx.stroke();
+
+          // Bottom-left bump
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.45, cy - s * 0.0, s * 0.25, Math.PI * 0.65, Math.PI * 1.85);
+          ctx.stroke();
+
+          // Top-left bump
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.2, cy - s * 0.2, s * 0.3, Math.PI * 0.8, Math.PI * 1.7);
+          ctx.stroke();
+
+          // Top-center bump (largest)
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.1, cy - s * 0.25, s * 0.35, Math.PI * 0.85, Math.PI * 1.9);
+          ctx.stroke();
+
+          // Right bump
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.45, cy - s * 0.05, s * 0.28, Math.PI * 1.1, Math.PI * 1.95);
+          ctx.stroke();
+
+          // Connecting arcs on bottom
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.45, cy + s * 0.05, s * 0.2, Math.PI * 0.0, Math.PI * 0.5);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.45, cy + s * 0.05, s * 0.2, Math.PI * 0.5, Math.PI * 1.0);
+          ctx.stroke();
+        }
+
+        function drawMountain(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Ground line
+          const baseY = cy + s * 0.6;
+
+          // Back mountain (left)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.95, baseY);
+          ctx.lineTo(cx - s * 0.4, cy - s * 0.5);
+          ctx.lineTo(cx + s * 0.05, baseY);
+          ctx.stroke();
+
+          // Snow cap left mountain
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.52, cy - s * 0.25);
+          ctx.lineTo(cx - s * 0.4, cy - s * 0.5);
+          ctx.lineTo(cx - s * 0.28, cy - s * 0.25);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.52, cy - s * 0.25);
+          ctx.lineTo(cx - s * 0.46, cy - s * 0.2);
+          ctx.lineTo(cx - s * 0.4, cy - s * 0.27);
+          ctx.lineTo(cx - s * 0.34, cy - s * 0.2);
+          ctx.lineTo(cx - s * 0.28, cy - s * 0.25);
+          ctx.stroke();
+
+          // Center mountain (tallest)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.55, baseY);
+          ctx.lineTo(cx + s * 0.05, cy - s * 0.85);
+          ctx.lineTo(cx + s * 0.6, baseY);
+          ctx.stroke();
+
+          // Snow cap center mountain
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.1, cy - s * 0.55);
+          ctx.lineTo(cx + s * 0.05, cy - s * 0.85);
+          ctx.lineTo(cx + s * 0.2, cy - s * 0.55);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.1, cy - s * 0.55);
+          ctx.lineTo(cx - s * 0.03, cy - s * 0.5);
+          ctx.lineTo(cx + s * 0.05, cy - s * 0.58);
+          ctx.lineTo(cx + s * 0.12, cy - s * 0.5);
+          ctx.lineTo(cx + s * 0.2, cy - s * 0.55);
+          ctx.stroke();
+
+          // Right mountain (smaller)
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.2, baseY);
+          ctx.lineTo(cx + s * 0.6, cy - s * 0.35);
+          ctx.lineTo(cx + s * 0.95, baseY);
+          ctx.stroke();
+
+          // Snow cap right mountain
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.5, cy - s * 0.15);
+          ctx.lineTo(cx + s * 0.6, cy - s * 0.35);
+          ctx.lineTo(cx + s * 0.7, cy - s * 0.15);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.5, cy - s * 0.15);
+          ctx.lineTo(cx + s * 0.55, cy - s * 0.1);
+          ctx.lineTo(cx + s * 0.6, cy - s * 0.17);
+          ctx.lineTo(cx + s * 0.65, cy - s * 0.1);
+          ctx.lineTo(cx + s * 0.7, cy - s * 0.15);
+          ctx.stroke();
+
+          // Ground line
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 1.0, baseY);
+          ctx.lineTo(cx + s * 1.0, baseY);
+          ctx.stroke();
+        }
+
+        function drawRainbow(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // 5 concentric arcs
+          const bandWidth = s * 0.08;
+          for (let i = 0; i < 5; i++) {
+            const r = s * 0.5 + i * bandWidth;
+            ctx.beginPath();
+            ctx.arc(cx, cy + s * 0.3, r, Math.PI, 0);
+            ctx.stroke();
+          }
+
+          // Left cloud
+          const lcx = cx - s * 0.8, lcy = cy + s * 0.3;
+          ctx.beginPath();
+          ctx.arc(lcx - s * 0.12, lcy, s * 0.15, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(lcx + s * 0.1, lcy - s * 0.05, s * 0.18, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(lcx + s * 0.3, lcy, s * 0.14, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(lcx + s * 0.08, lcy + s * 0.1, s * 0.16, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Right cloud
+          const rcx = cx + s * 0.8, rcy = cy + s * 0.3;
+          ctx.beginPath();
+          ctx.arc(rcx - s * 0.12, rcy, s * 0.15, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(rcx + s * 0.1, rcy - s * 0.05, s * 0.18, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(rcx + s * 0.3, rcy, s * 0.14, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(rcx + s * 0.08, rcy + s * 0.1, s * 0.16, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        function drawCar(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Body
+          ctx.beginPath();
+          ctx.moveTo(cx - s, cy + s * 0.2);
+          ctx.lineTo(cx + s, cy + s * 0.2);
+          ctx.lineTo(cx + s, cy - s * 0.15);
+          ctx.lineTo(cx + s * 0.6, cy - s * 0.15);
+          ctx.quadraticCurveTo(cx + s * 0.5, cy - s * 0.7, cx + s * 0.2, cy - s * 0.7);
+          ctx.lineTo(cx - s * 0.35, cy - s * 0.7);
+          ctx.quadraticCurveTo(cx - s * 0.55, cy - s * 0.7, cx - s * 0.65, cy - s * 0.15);
+          ctx.lineTo(cx - s, cy - s * 0.15);
+          ctx.closePath();
+          ctx.stroke();
+          // Window divider
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.05, cy - s * 0.7);
+          ctx.lineTo(cx + s * 0.05, cy - s * 0.15);
+          ctx.stroke();
+          // Windshield line
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.65, cy - s * 0.15);
+          ctx.lineTo(cx + s * 0.6, cy - s * 0.15);
+          ctx.stroke();
+          // Door line
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.05, cy - s * 0.15);
+          ctx.lineTo(cx + s * 0.05, cy + s * 0.2);
+          ctx.stroke();
+          // Wheels
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.55, cy + s * 0.2, s * 0.22, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.55, cy + s * 0.2, s * 0.22, 0, Math.PI * 2);
+          ctx.stroke();
+          // Inner wheels
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.55, cy + s * 0.2, s * 0.1, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.55, cy + s * 0.2, s * 0.1, 0, Math.PI * 2);
+          ctx.stroke();
+          // Headlights
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.92, cy - s * 0.02, s * 0.07, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.92, cy - s * 0.02, s * 0.07, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        function drawBoat(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Hull
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.9, cy + s * 0.15);
+          ctx.lineTo(cx - s * 0.7, cy + s * 0.55);
+          ctx.lineTo(cx + s * 0.7, cy + s * 0.55);
+          ctx.lineTo(cx + s * 0.9, cy + s * 0.15);
+          ctx.closePath();
+          ctx.stroke();
+          // Hull stripe
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.82, cy + s * 0.3);
+          ctx.lineTo(cx + s * 0.82, cy + s * 0.3);
+          ctx.stroke();
+          // Mast
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.15);
+          ctx.lineTo(cx, cy - s * 0.9);
+          ctx.stroke();
+          // Main sail
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.85);
+          ctx.lineTo(cx + s * 0.6, cy + s * 0.1);
+          ctx.lineTo(cx, cy + s * 0.1);
+          ctx.closePath();
+          ctx.stroke();
+          // Small sail
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.7);
+          ctx.lineTo(cx - s * 0.35, cy + s * 0.05);
+          ctx.lineTo(cx, cy + s * 0.05);
+          ctx.closePath();
+          ctx.stroke();
+          // Flag
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.9);
+          ctx.lineTo(cx + s * 0.2, cy - s * 0.98);
+          ctx.lineTo(cx, cy - s * 1.05);
+          ctx.stroke();
+          // Water waves
+          for (let i = -1; i <= 1; i++) {
+            ctx.beginPath();
+            ctx.moveTo(cx - s * 1.1, cy + s * 0.7 + i * s * 0.15);
+            ctx.quadraticCurveTo(cx - s * 0.7, cy + s * 0.6 + i * s * 0.15, cx - s * 0.35, cy + s * 0.7 + i * s * 0.15);
+            ctx.quadraticCurveTo(cx, cy + s * 0.8 + i * s * 0.15, cx + s * 0.35, cy + s * 0.7 + i * s * 0.15);
+            ctx.quadraticCurveTo(cx + s * 0.7, cy + s * 0.6 + i * s * 0.15, cx + s * 1.1, cy + s * 0.7 + i * s * 0.15);
+            ctx.stroke();
+          }
+        }
+
+        function drawRocket(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Body
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.3, cy + s * 0.6);
+          ctx.lineTo(cx - s * 0.3, cy - s * 0.4);
+          ctx.quadraticCurveTo(cx - s * 0.3, cy - s * 0.8, cx, cy - s * 1.1);
+          ctx.quadraticCurveTo(cx + s * 0.3, cy - s * 0.8, cx + s * 0.3, cy - s * 0.4);
+          ctx.lineTo(cx + s * 0.3, cy + s * 0.6);
+          ctx.stroke();
+          // Nose cone line
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.3, cy - s * 0.4);
+          ctx.lineTo(cx + s * 0.3, cy - s * 0.4);
+          ctx.stroke();
+          // Window
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.15, s * 0.15, 0, Math.PI * 2);
+          ctx.stroke();
+          // Body stripe
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.3, cy + s * 0.3);
+          ctx.lineTo(cx + s * 0.3, cy + s * 0.3);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.3, cy + s * 0.45);
+          ctx.lineTo(cx + s * 0.3, cy + s * 0.45);
+          ctx.stroke();
+          // Left fin
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.3, cy + s * 0.35);
+          ctx.lineTo(cx - s * 0.6, cy + s * 0.75);
+          ctx.lineTo(cx - s * 0.3, cy + s * 0.6);
+          ctx.stroke();
+          // Right fin
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.3, cy + s * 0.35);
+          ctx.lineTo(cx + s * 0.6, cy + s * 0.75);
+          ctx.lineTo(cx + s * 0.3, cy + s * 0.6);
+          ctx.stroke();
+          // Bottom fin
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.08, cy + s * 0.6);
+          ctx.lineTo(cx, cy + s * 0.8);
+          ctx.lineTo(cx + s * 0.08, cy + s * 0.6);
+          ctx.stroke();
+          // Flame
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.2, cy + s * 0.6);
+          ctx.quadraticCurveTo(cx - s * 0.15, cy + s * 0.9, cx, cy + s * 1.1);
+          ctx.quadraticCurveTo(cx + s * 0.15, cy + s * 0.9, cx + s * 0.2, cy + s * 0.6);
+          ctx.stroke();
+          // Inner flame
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.1, cy + s * 0.6);
+          ctx.quadraticCurveTo(cx - s * 0.05, cy + s * 0.8, cx, cy + s * 0.95);
+          ctx.quadraticCurveTo(cx + s * 0.05, cy + s * 0.8, cx + s * 0.1, cy + s * 0.6);
+          ctx.stroke();
+        }
+
+        function drawAirplane(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Fuselage
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 1.0, cy);
+          ctx.quadraticCurveTo(cx - s * 1.1, cy - s * 0.12, cx - s * 0.9, cy - s * 0.15);
+          ctx.lineTo(cx + s * 0.6, cy - s * 0.15);
+          ctx.quadraticCurveTo(cx + s * 1.1, cy - s * 0.1, cx + s * 1.1, cy);
+          ctx.quadraticCurveTo(cx + s * 1.1, cy + s * 0.1, cx + s * 0.6, cy + s * 0.15);
+          ctx.lineTo(cx - s * 0.9, cy + s * 0.15);
+          ctx.quadraticCurveTo(cx - s * 1.1, cy + s * 0.12, cx - s * 1.0, cy);
+          ctx.closePath();
+          ctx.stroke();
+          // Top wing
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.15, cy - s * 0.15);
+          ctx.lineTo(cx - s * 0.35, cy - s * 0.65);
+          ctx.lineTo(cx + s * 0.25, cy - s * 0.65);
+          ctx.lineTo(cx + s * 0.15, cy - s * 0.15);
+          ctx.stroke();
+          // Bottom wing
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.15, cy + s * 0.15);
+          ctx.lineTo(cx - s * 0.35, cy + s * 0.65);
+          ctx.lineTo(cx + s * 0.25, cy + s * 0.65);
+          ctx.lineTo(cx + s * 0.15, cy + s * 0.15);
+          ctx.stroke();
+          // Tail top
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.8, cy - s * 0.15);
+          ctx.lineTo(cx - s * 1.0, cy - s * 0.5);
+          ctx.lineTo(cx - s * 0.6, cy - s * 0.5);
+          ctx.lineTo(cx - s * 0.55, cy - s * 0.15);
+          ctx.stroke();
+          // Tail bottom
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.8, cy + s * 0.15);
+          ctx.lineTo(cx - s * 0.95, cy + s * 0.35);
+          ctx.lineTo(cx - s * 0.6, cy + s * 0.35);
+          ctx.lineTo(cx - s * 0.55, cy + s * 0.15);
+          ctx.stroke();
+          // Windows
+          for (let i = 0; i < 5; i++) {
+            ctx.beginPath();
+            ctx.arc(cx - s * 0.3 + i * s * 0.22, cy - s * 0.02, s * 0.05, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+          // Propeller hub
+          ctx.beginPath();
+          ctx.arc(cx + s * 1.1, cy, s * 0.05, 0, Math.PI * 2);
+          ctx.stroke();
+          // Propeller blades
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 1.1, cy - s * 0.35);
+          ctx.quadraticCurveTo(cx + s * 1.15, cy, cx + s * 1.1, cy + s * 0.35);
+          ctx.stroke();
+        }
+
+        function drawTrain(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Main body
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.9, cy - s * 0.3);
+          ctx.lineTo(cx + s * 0.5, cy - s * 0.3);
+          ctx.lineTo(cx + s * 0.5, cy + s * 0.35);
+          ctx.lineTo(cx - s * 0.9, cy + s * 0.35);
+          ctx.closePath();
+          ctx.stroke();
+          // Cabin (taller back section)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.9, cy - s * 0.3);
+          ctx.lineTo(cx - s * 0.9, cy - s * 0.7);
+          ctx.lineTo(cx - s * 0.4, cy - s * 0.7);
+          ctx.lineTo(cx - s * 0.4, cy - s * 0.3);
+          ctx.stroke();
+          // Cabin window
+          ctx.beginPath();
+          ctx.rect(cx - s * 0.8, cy - s * 0.6, s * 0.3, s * 0.2);
+          ctx.stroke();
+          // Smokestack
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy - s * 0.3);
+          ctx.lineTo(cx + s * 0.15, cy - s * 0.6);
+          ctx.lineTo(cx + s * 0.3, cy - s * 0.6);
+          ctx.lineTo(cx + s * 0.3, cy - s * 0.3);
+          ctx.stroke();
+          // Smokestack top
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.1, cy - s * 0.6);
+          ctx.lineTo(cx + s * 0.35, cy - s * 0.6);
+          ctx.stroke();
+          // Smoke puffs
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.22, cy - s * 0.75, s * 0.1, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.08, cy - s * 0.9, s * 0.12, 0, Math.PI * 2);
+          ctx.stroke();
+          // Body windows
+          ctx.beginPath();
+          ctx.rect(cx - s * 0.25, cy - s * 0.2, s * 0.2, s * 0.18);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.rect(cx + s * 0.05, cy - s * 0.2, s * 0.2, s * 0.18);
+          ctx.stroke();
+          // Cow catcher
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.5, cy + s * 0.15);
+          ctx.lineTo(cx + s * 0.75, cy + s * 0.45);
+          ctx.lineTo(cx + s * 0.5, cy + s * 0.35);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.55, cy + s * 0.45);
+          ctx.lineTo(cx + s * 0.75, cy + s * 0.45);
+          ctx.stroke();
+          // Wheels
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.6, cy + s * 0.45, s * 0.18, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.1, cy + s * 0.45, s * 0.18, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.35, cy + s * 0.45, s * 0.14, 0, Math.PI * 2);
+          ctx.stroke();
+          // Rail
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 1.1, cy + s * 0.63);
+          ctx.lineTo(cx + s * 0.9, cy + s * 0.63);
+          ctx.stroke();
+        }
+
+        function drawBicycle(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          const wheelR = s * 0.35;
+          const lwx = cx - s * 0.55, rwx = cx + s * 0.55;
+          const wy = cy + s * 0.25;
+          // Back wheel
+          ctx.beginPath();
+          ctx.arc(lwx, wy, wheelR, 0, Math.PI * 2);
+          ctx.stroke();
+          // Front wheel
+          ctx.beginPath();
+          ctx.arc(rwx, wy, wheelR, 0, Math.PI * 2);
+          ctx.stroke();
+          // Hub back
+          ctx.beginPath();
+          ctx.arc(lwx, wy, s * 0.05, 0, Math.PI * 2);
+          ctx.stroke();
+          // Hub front
+          ctx.beginPath();
+          ctx.arc(rwx, wy, s * 0.05, 0, Math.PI * 2);
+          ctx.stroke();
+          // Spokes back
+          for (let i = 0; i < 6; i++) {
+            const a = (i / 6) * Math.PI * 2;
+            ctx.beginPath();
+            ctx.moveTo(lwx, wy);
+            ctx.lineTo(lwx + Math.cos(a) * wheelR, wy + Math.sin(a) * wheelR);
+            ctx.stroke();
+          }
+          // Spokes front
+          for (let i = 0; i < 6; i++) {
+            const a = (i / 6) * Math.PI * 2;
+            ctx.beginPath();
+            ctx.moveTo(rwx, wy);
+            ctx.lineTo(rwx + Math.cos(a) * wheelR, wy + Math.sin(a) * wheelR);
+            ctx.stroke();
+          }
+          // Frame: seat tube to pedal area
+          const pedalX = cx - s * 0.1, pedalY = wy;
+          const seatX = cx - s * 0.25, seatY = cy - s * 0.35;
+          ctx.beginPath();
+          ctx.moveTo(seatX, seatY);
+          ctx.lineTo(pedalX, pedalY);
+          ctx.stroke();
+          // Chain stay (pedal to back wheel)
+          ctx.beginPath();
+          ctx.moveTo(pedalX, pedalY);
+          ctx.lineTo(lwx, wy);
+          ctx.stroke();
+          // Seat stay (seat to back wheel)
+          ctx.beginPath();
+          ctx.moveTo(seatX, seatY);
+          ctx.lineTo(lwx, wy);
+          ctx.stroke();
+          // Top tube (seat to head tube)
+          const headX = cx + s * 0.3, headY = cy - s * 0.3;
+          ctx.beginPath();
+          ctx.moveTo(seatX, seatY);
+          ctx.lineTo(headX, headY);
+          ctx.stroke();
+          // Down tube (head to pedal)
+          ctx.beginPath();
+          ctx.moveTo(headX, headY);
+          ctx.lineTo(pedalX, pedalY);
+          ctx.stroke();
+          // Fork (head to front wheel)
+          ctx.beginPath();
+          ctx.moveTo(headX, headY);
+          ctx.lineTo(rwx, wy);
+          ctx.stroke();
+          // Handlebars
+          ctx.beginPath();
+          ctx.moveTo(headX - s * 0.1, headY - s * 0.15);
+          ctx.lineTo(headX, headY);
+          ctx.lineTo(headX + s * 0.15, headY - s * 0.12);
+          ctx.stroke();
+          // Seat
+          ctx.beginPath();
+          ctx.moveTo(seatX - s * 0.12, seatY - s * 0.05);
+          ctx.lineTo(seatX + s * 0.12, seatY - s * 0.05);
+          ctx.stroke();
+          // Pedal circle
+          ctx.beginPath();
+          ctx.arc(pedalX, pedalY, s * 0.08, 0, Math.PI * 2);
+          ctx.stroke();
+          // Pedal arms
+          ctx.beginPath();
+          ctx.moveTo(pedalX - s * 0.12, pedalY + s * 0.06);
+          ctx.lineTo(pedalX + s * 0.12, pedalY - s * 0.06);
+          ctx.stroke();
+        }
+
+        function drawCastle(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Main wall
+          ctx.beginPath();
+          ctx.rect(cx - s * 0.7, cy - s * 0.2, s * 1.4, s * 0.9);
+          ctx.stroke();
+          // Battlements on main wall
+          const bw = s * 0.14, bh = s * 0.12;
+          for (let i = 0; i < 5; i++) {
+            const bx = cx - s * 0.7 + i * s * 0.28 + s * 0.07;
+            ctx.beginPath();
+            ctx.rect(bx, cy - s * 0.32, bw, bh);
+            ctx.stroke();
+          }
+          // Left tower
+          ctx.beginPath();
+          ctx.rect(cx - s * 0.85, cy - s * 0.55, s * 0.35, s * 1.25);
+          ctx.stroke();
+          // Left tower roof
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.9, cy - s * 0.55);
+          ctx.lineTo(cx - s * 0.675, cy - s * 0.85);
+          ctx.lineTo(cx - s * 0.45, cy - s * 0.55);
+          ctx.stroke();
+          // Center tower
+          ctx.beginPath();
+          ctx.rect(cx - s * 0.2, cy - s * 0.6, s * 0.4, s * 0.4);
+          ctx.stroke();
+          // Center tower roof
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.25, cy - s * 0.6);
+          ctx.lineTo(cx, cy - s * 0.95);
+          ctx.lineTo(cx + s * 0.25, cy - s * 0.6);
+          ctx.stroke();
+          // Right tower
+          ctx.beginPath();
+          ctx.rect(cx + s * 0.5, cy - s * 0.55, s * 0.35, s * 1.25);
+          ctx.stroke();
+          // Right tower roof
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.45, cy - s * 0.55);
+          ctx.lineTo(cx + s * 0.675, cy - s * 0.85);
+          ctx.lineTo(cx + s * 0.9, cy - s * 0.55);
+          ctx.stroke();
+          // Door arch
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.12, cy + s * 0.7);
+          ctx.lineTo(cx - s * 0.12, cy + s * 0.3);
+          ctx.arc(cx, cy + s * 0.3, s * 0.12, Math.PI, 0);
+          ctx.lineTo(cx + s * 0.12, cy + s * 0.7);
+          ctx.stroke();
+          // Tower windows
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.675, cy - s * 0.2, s * 0.07, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.675, cy - s * 0.2, s * 0.07, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.45, s * 0.06, 0, Math.PI * 2);
+          ctx.stroke();
+          // Flag on center tower
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.95);
+          ctx.lineTo(cx, cy - s * 1.15);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 1.15);
+          ctx.lineTo(cx + s * 0.18, cy - s * 1.08);
+          ctx.lineTo(cx, cy - s * 1.0);
+          ctx.stroke();
+        }
+
+        function drawCrown(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Crown outline with 5 peaks
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.9, cy + s * 0.4);
+          ctx.lineTo(cx - s * 0.9, cy + s * 0.05);
+          ctx.lineTo(cx - s * 0.7, cy - s * 0.5);
+          ctx.lineTo(cx - s * 0.5, cy + s * 0.05);
+          ctx.lineTo(cx - s * 0.35, cy - s * 0.55);
+          ctx.lineTo(cx - s * 0.15, cy + s * 0.05);
+          ctx.lineTo(cx, cy - s * 0.65);
+          ctx.lineTo(cx + s * 0.15, cy + s * 0.05);
+          ctx.lineTo(cx + s * 0.35, cy - s * 0.55);
+          ctx.lineTo(cx + s * 0.5, cy + s * 0.05);
+          ctx.lineTo(cx + s * 0.7, cy - s * 0.5);
+          ctx.lineTo(cx + s * 0.9, cy + s * 0.05);
+          ctx.lineTo(cx + s * 0.9, cy + s * 0.4);
+          ctx.closePath();
+          ctx.stroke();
+          // Base band top
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.9, cy + s * 0.15);
+          ctx.lineTo(cx + s * 0.9, cy + s * 0.15);
+          ctx.stroke();
+          // Base band bottom decorative line
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.9, cy + s * 0.28);
+          ctx.lineTo(cx + s * 0.9, cy + s * 0.28);
+          ctx.stroke();
+          // Jewel circles on peaks
+          const peaks = [
+            [cx - s * 0.7, cy - s * 0.5],
+            [cx - s * 0.35, cy - s * 0.55],
+            [cx, cy - s * 0.65],
+            [cx + s * 0.35, cy - s * 0.55],
+            [cx + s * 0.7, cy - s * 0.5]
+          ];
+          for (const [px, py] of peaks) {
+            ctx.beginPath();
+            ctx.arc(px, py, s * 0.08, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+          // Band jewels (between peaks at band level)
+          const bandJewels = [cx - s * 0.6, cx - s * 0.2, cx + s * 0.2, cx + s * 0.6];
+          for (const bx of bandJewels) {
+            ctx.beginPath();
+            ctx.arc(bx, cy + s * 0.21, s * 0.05, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+          // Cross-hatching on band
+          for (let i = -3; i <= 3; i++) {
+            ctx.beginPath();
+            ctx.moveTo(cx + i * s * 0.25, cy + s * 0.15);
+            ctx.lineTo(cx + i * s * 0.25, cy + s * 0.28);
+            ctx.stroke();
+          }
+        }
+
+        function drawUnicorn(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Body (ellipse)
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.05, cy + s * 0.15, s * 0.55, s * 0.35, 0, 0, Math.PI * 2);
+          ctx.stroke();
+          // Neck
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.35, cy - s * 0.05);
+          ctx.quadraticCurveTo(cx + s * 0.55, cy - s * 0.4, cx + s * 0.5, cy - s * 0.65);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy - s * 0.1);
+          ctx.quadraticCurveTo(cx + s * 0.3, cy - s * 0.45, cx + s * 0.3, cy - s * 0.65);
+          ctx.stroke();
+          // Head
+          ctx.beginPath();
+          ctx.ellipse(cx + s * 0.55, cy - s * 0.72, s * 0.22, s * 0.16, 0.3, 0, Math.PI * 2);
+          ctx.stroke();
+          // Muzzle
+          ctx.beginPath();
+          ctx.ellipse(cx + s * 0.75, cy - s * 0.65, s * 0.1, s * 0.08, 0.2, 0, Math.PI * 2);
+          ctx.stroke();
+          // Eye
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.58, cy - s * 0.76, s * 0.04, 0, Math.PI * 2);
+          ctx.fill();
+          // Horn (spiral)
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.5, cy - s * 0.85);
+          ctx.lineTo(cx + s * 0.55, cy - s * 1.2);
+          ctx.lineTo(cx + s * 0.42, cy - s * 0.85);
+          ctx.stroke();
+          // Horn spiral lines
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.49, cy - s * 0.95);
+          ctx.lineTo(cx + s * 0.52, cy - s * 0.95);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.5, cy - s * 1.05);
+          ctx.lineTo(cx + s * 0.54, cy - s * 1.05);
+          ctx.stroke();
+          // Ear
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.42, cy - s * 0.82);
+          ctx.lineTo(cx + s * 0.38, cy - s * 0.98);
+          ctx.lineTo(cx + s * 0.48, cy - s * 0.86);
+          ctx.stroke();
+          // Mane (flowing curves)
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.35, cy - s * 0.8);
+          ctx.bezierCurveTo(cx + s * 0.15, cy - s * 0.9, cx + s * 0.1, cy - s * 0.6, cx + s * 0.2, cy - s * 0.4);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.3, cy - s * 0.75);
+          ctx.bezierCurveTo(cx + s * 0.05, cy - s * 0.8, cx, cy - s * 0.5, cx + s * 0.1, cy - s * 0.25);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.25, cy - s * 0.65);
+          ctx.bezierCurveTo(cx, cy - s * 0.7, cx - s * 0.05, cy - s * 0.4, cx + s * 0.05, cy - s * 0.15);
+          ctx.stroke();
+          // Legs
+          const legs = [
+            [cx + s * 0.25, cy + s * 0.4],
+            [cx + s * 0.1, cy + s * 0.4],
+            [cx - s * 0.25, cy + s * 0.4],
+            [cx - s * 0.4, cy + s * 0.4]
+          ];
+          for (const [lx, ly] of legs) {
+            ctx.beginPath();
+            ctx.moveTo(lx, ly);
+            ctx.lineTo(lx, ly + s * 0.45);
+            ctx.lineTo(lx + s * 0.06, ly + s * 0.48);
+            ctx.stroke();
+          }
+          // Tail
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.55, cy + s * 0.05);
+          ctx.bezierCurveTo(cx - s * 0.85, cy - s * 0.15, cx - s * 0.95, cy + s * 0.3, cx - s * 0.75, cy + s * 0.55);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.55, cy + s * 0.1);
+          ctx.bezierCurveTo(cx - s * 0.8, cy - s * 0.05, cx - s * 0.9, cy + s * 0.35, cx - s * 0.65, cy + s * 0.55);
+          ctx.stroke();
+        }
+
+        function drawStar(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Large 5-pointed star
+          const outerR = s * 0.95, innerR = s * 0.4;
+          const starPoints = [];
+          for (let i = 0; i < 10; i++) {
+            const angle = (i * Math.PI / 5) - Math.PI / 2;
+            const r = i % 2 === 0 ? outerR : innerR;
+            starPoints.push([cx + Math.cos(angle) * r, cy + Math.sin(angle) * r]);
+          }
+          ctx.beginPath();
+          ctx.moveTo(starPoints[0][0], starPoints[0][1]);
+          for (let i = 1; i < starPoints.length; i++) {
+            ctx.lineTo(starPoints[i][0], starPoints[i][1]);
+          }
+          ctx.closePath();
+          ctx.stroke();
+          // Inner facet lines (from center to inner points)
+          for (let i = 0; i < 5; i++) {
+            const angle = (i * 2 + 1) * Math.PI / 5 - Math.PI / 2;
+            const ix = cx + Math.cos(angle) * innerR;
+            const iy = cy + Math.sin(angle) * innerR;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(ix, iy);
+            ctx.stroke();
+          }
+          // Facet lines from center to outer points
+          for (let i = 0; i < 5; i++) {
+            const angle = (i * 2) * Math.PI / 5 - Math.PI / 2;
+            const ox = cx + Math.cos(angle) * outerR;
+            const oy = cy + Math.sin(angle) * outerR;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(ox, oy);
+            ctx.stroke();
+          }
+          // Small stars around
+          const smallStarAngles = [0.3, 1.2, 2.5, 3.8, 5.1];
+          for (const a of smallStarAngles) {
+            const sx = cx + Math.cos(a) * s * 1.3;
+            const sy = cy + Math.sin(a) * s * 1.3;
+            const sr = s * 0.1, sir = s * 0.04;
+            ctx.beginPath();
+            for (let i = 0; i < 10; i++) {
+              const sa = (i * Math.PI / 5) - Math.PI / 2;
+              const r = i % 2 === 0 ? sr : sir;
+              const px = sx + Math.cos(sa) * r;
+              const py = sy + Math.sin(sa) * r;
+              if (i === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+            ctx.stroke();
+          }
+        }
+
+        function drawDragon(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Round body
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.1, cy + s * 0.15, s * 0.5, s * 0.45, 0, 0, Math.PI * 2);
+          ctx.stroke();
+          // Belly line
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.1, cy + s * 0.25, s * 0.3, s * 0.3, 0, 0.3, Math.PI - 0.3);
+          ctx.stroke();
+          // Head
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.45, cy - s * 0.35, s * 0.3, 0, Math.PI * 2);
+          ctx.stroke();
+          // Snout
+          ctx.beginPath();
+          ctx.ellipse(cx + s * 0.72, cy - s * 0.3, s * 0.14, s * 0.1, 0.1, 0, Math.PI * 2);
+          ctx.stroke();
+          // Nostrils
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.8, cy - s * 0.33, s * 0.025, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.78, cy - s * 0.27, s * 0.025, 0, Math.PI * 2);
+          ctx.fill();
+          // Big eyes
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.5, cy - s * 0.42, s * 0.1, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.52, cy - s * 0.43, s * 0.05, 0, Math.PI * 2);
+          ctx.fill();
+          // Horns
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.32, cy - s * 0.58);
+          ctx.lineTo(cx + s * 0.2, cy - s * 0.8);
+          ctx.lineTo(cx + s * 0.38, cy - s * 0.62);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.5, cy - s * 0.62);
+          ctx.lineTo(cx + s * 0.45, cy - s * 0.85);
+          ctx.lineTo(cx + s * 0.55, cy - s * 0.65);
+          ctx.stroke();
+          // Spiky back
+          const spikes = [
+            [cx + s * 0.2, cy - s * 0.15],
+            [cx + s * 0.05, cy - s * 0.1],
+            [cx - s * 0.1, cy - s * 0.12],
+            [cx - s * 0.25, cy - s * 0.15],
+            [cx - s * 0.4, cy - s * 0.1]
+          ];
+          for (const [spx, spy] of spikes) {
+            ctx.beginPath();
+            ctx.moveTo(spx - s * 0.06, spy + s * 0.1);
+            ctx.lineTo(spx, spy - s * 0.12);
+            ctx.lineTo(spx + s * 0.06, spy + s * 0.1);
+            ctx.stroke();
+          }
+          // Small wings
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.1, cy - s * 0.05);
+          ctx.bezierCurveTo(cx + s * 0.4, cy - s * 0.5, cx + s * 0.7, cy - s * 0.3, cx + s * 0.3, cy + s * 0.05);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy - s * 0.02);
+          ctx.bezierCurveTo(cx + s * 0.35, cy - s * 0.35, cx + s * 0.55, cy - s * 0.2, cx + s * 0.25, cy + s * 0.05);
+          ctx.stroke();
+          // Legs
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy + s * 0.5);
+          ctx.lineTo(cx + s * 0.2, cy + s * 0.75);
+          ctx.lineTo(cx + s * 0.3, cy + s * 0.72);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.25, cy + s * 0.5);
+          ctx.lineTo(cx - s * 0.3, cy + s * 0.75);
+          ctx.lineTo(cx - s * 0.2, cy + s * 0.72);
+          ctx.stroke();
+          // Arms
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.3, cy + s * 0.2);
+          ctx.lineTo(cx + s * 0.45, cy + s * 0.35);
+          ctx.lineTo(cx + s * 0.5, cy + s * 0.3);
+          ctx.stroke();
+          // Curled tail
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.55, cy + s * 0.25);
+          ctx.bezierCurveTo(cx - s * 0.85, cy + s * 0.2, cx - s * 1.0, cy + s * 0.5, cx - s * 0.8, cy + s * 0.65);
+          ctx.bezierCurveTo(cx - s * 0.65, cy + s * 0.75, cx - s * 0.55, cy + s * 0.6, cx - s * 0.65, cy + s * 0.5);
+          ctx.stroke();
+          // Smile
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.65, cy - s * 0.25, s * 0.1, 0.2, Math.PI - 0.2);
+          ctx.stroke();
+        }
+
+        function drawFairy(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          // Head
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.55, s * 0.22, 0, Math.PI * 2);
+          ctx.stroke();
+          // Eyes
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.07, cy - s * 0.58, s * 0.03, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.07, cy - s * 0.58, s * 0.03, 0, Math.PI * 2);
+          ctx.fill();
+          // Smile
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.5, s * 0.07, 0.2, Math.PI - 0.2);
+          ctx.stroke();
+          // Hair
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.22, cy - s * 0.6);
+          ctx.bezierCurveTo(cx - s * 0.35, cy - s * 0.85, cx - s * 0.1, cy - s * 0.9, cx, cy - s * 0.77);
+          ctx.bezierCurveTo(cx + s * 0.1, cy - s * 0.9, cx + s * 0.35, cy - s * 0.85, cx + s * 0.22, cy - s * 0.6);
+          ctx.stroke();
+          // Hair sides flowing down
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.22, cy - s * 0.6);
+          ctx.bezierCurveTo(cx - s * 0.35, cy - s * 0.4, cx - s * 0.3, cy - s * 0.15, cx - s * 0.25, cy - s * 0.05);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.22, cy - s * 0.6);
+          ctx.bezierCurveTo(cx + s * 0.35, cy - s * 0.4, cx + s * 0.3, cy - s * 0.15, cx + s * 0.25, cy - s * 0.05);
+          ctx.stroke();
+          // Body / dress (triangle shape)
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.33);
+          ctx.lineTo(cx - s * 0.35, cy + s * 0.45);
+          ctx.quadraticCurveTo(cx, cy + s * 0.55, cx + s * 0.35, cy + s * 0.45);
+          ctx.closePath();
+          ctx.stroke();
+          // Dress waist line
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.15, cy - s * 0.05);
+          ctx.quadraticCurveTo(cx, cy + s * 0.02, cx + s * 0.15, cy - s * 0.05);
+          ctx.stroke();
+          // Left wing (upper)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.1, cy - s * 0.2);
+          ctx.bezierCurveTo(cx - s * 0.65, cy - s * 0.65, cx - s * 0.85, cy - s * 0.2, cx - s * 0.15, cy + s * 0.05);
+          ctx.stroke();
+          // Left wing (lower)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.12, cy + s * 0.0);
+          ctx.bezierCurveTo(cx - s * 0.55, cy - s * 0.05, cx - s * 0.65, cy + s * 0.25, cx - s * 0.15, cy + s * 0.2);
+          ctx.stroke();
+          // Right wing (upper)
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.1, cy - s * 0.2);
+          ctx.bezierCurveTo(cx + s * 0.65, cy - s * 0.65, cx + s * 0.85, cy - s * 0.2, cx + s * 0.15, cy + s * 0.05);
+          ctx.stroke();
+          // Right wing (lower)
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.12, cy + s * 0.0);
+          ctx.bezierCurveTo(cx + s * 0.55, cy - s * 0.05, cx + s * 0.65, cy + s * 0.25, cx + s * 0.15, cy + s * 0.2);
+          ctx.stroke();
+          // Wing details (vein lines)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.12, cy - s * 0.1);
+          ctx.quadraticCurveTo(cx - s * 0.45, cy - s * 0.3, cx - s * 0.55, cy - s * 0.15);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.12, cy - s * 0.1);
+          ctx.quadraticCurveTo(cx + s * 0.45, cy - s * 0.3, cx + s * 0.55, cy - s * 0.15);
+          ctx.stroke();
+          // Right arm with wand
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.1, cy - s * 0.2);
+          ctx.lineTo(cx + s * 0.4, cy - s * 0.4);
+          ctx.stroke();
+          // Wand
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.4, cy - s * 0.4);
+          ctx.lineTo(cx + s * 0.55, cy - s * 0.7);
+          ctx.stroke();
+          // Wand star
+          const wsx = cx + s * 0.55, wsy = cy - s * 0.75;
+          const wsr = s * 0.08, wsir = s * 0.035;
+          ctx.beginPath();
+          for (let i = 0; i < 10; i++) {
+            const a = (i * Math.PI / 5) - Math.PI / 2;
+            const r = i % 2 === 0 ? wsr : wsir;
+            const px = wsx + Math.cos(a) * r;
+            const py = wsy + Math.sin(a) * r;
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          }
+          ctx.closePath();
+          ctx.stroke();
+          // Left arm
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.1, cy - s * 0.2);
+          ctx.lineTo(cx - s * 0.35, cy - s * 0.05);
+          ctx.stroke();
+          // Legs/feet peeking from dress
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.15, cy + s * 0.45);
+          ctx.lineTo(cx - s * 0.15, cy + s * 0.65);
+          ctx.lineTo(cx - s * 0.05, cy + s * 0.65);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy + s * 0.45);
+          ctx.lineTo(cx + s * 0.15, cy + s * 0.65);
+          ctx.lineTo(cx + s * 0.25, cy + s * 0.65);
+          ctx.stroke();
+        }
+
+        function drawIceCream(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Waffle cone (triangle)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.45, cy - s * 0.1);
+          ctx.lineTo(cx, cy + s * 1.1);
+          ctx.lineTo(cx + s * 0.45, cy - s * 0.1);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Cross-hatch lines on cone
+          for (let i = 1; i <= 4; i++) {
+            const t = i / 5;
+            const lx = cx - s * 0.45 * (1 - t);
+            const rx = cx + s * 0.45 * (1 - t);
+            const ly = cy - s * 0.1 + (cy + s * 1.1 - (cy - s * 0.1)) * t;
+            ctx.beginPath();
+            ctx.moveTo(lx, ly);
+            ctx.lineTo(rx, ly);
+            ctx.stroke();
+          }
+          // Diagonal lines
+          for (let i = 0; i < 3; i++) {
+            const offset = (i - 1) * s * 0.2;
+            ctx.beginPath();
+            ctx.moveTo(cx + offset - s * 0.2, cy - s * 0.1);
+            ctx.lineTo(cx + offset + s * 0.1, cy + s * 0.7);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(cx + offset + s * 0.2, cy - s * 0.1);
+            ctx.lineTo(cx + offset - s * 0.1, cy + s * 0.7);
+            ctx.stroke();
+          }
+
+          // Three scoops
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.3, s * 0.35, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.3, cy - s * 0.55, s * 0.3, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.3, cy - s * 0.55, s * 0.3, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        function drawPizza(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Pizza slice triangle
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.9);
+          ctx.lineTo(cx - s * 0.65, cy - s * 0.7);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.9);
+          ctx.lineTo(cx + s * 0.65, cy - s * 0.7);
+          ctx.stroke();
+
+          // Curved crust edge
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.65, cy - s * 0.7);
+          ctx.quadraticCurveTo(cx, cy - s * 1.05, cx + s * 0.65, cy - s * 0.7);
+          ctx.stroke();
+
+          // Inner crust line
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.55, cy - s * 0.55);
+          ctx.quadraticCurveTo(cx, cy - s * 0.85, cx + s * 0.55, cy - s * 0.55);
+          ctx.stroke();
+
+          // Pepperoni circles
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.15, cy - s * 0.1, s * 0.12, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.2, cy - s * 0.25, s * 0.1, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.05, cy + s * 0.35, s * 0.1, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.1, cy - s * 0.45, s * 0.08, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Cheese drip from crust
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.3, cy - s * 0.55);
+          ctx.quadraticCurveTo(cx - s * 0.32, cy - s * 0.4, cx - s * 0.28, cy - s * 0.35);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy - s * 0.6);
+          ctx.quadraticCurveTo(cx + s * 0.13, cy - s * 0.45, cx + s * 0.17, cy - s * 0.38);
+          ctx.stroke();
+        }
+
+        function drawCake(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Plate
+          ctx.beginPath();
+          ctx.ellipse(cx, cy + s * 0.85, s * 0.95, s * 0.12, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Bottom tier
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.8, cy + s * 0.75);
+          ctx.lineTo(cx - s * 0.8, cy + s * 0.15);
+          ctx.lineTo(cx + s * 0.8, cy + s * 0.15);
+          ctx.lineTo(cx + s * 0.8, cy + s * 0.75);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Top tier
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.55, cy + s * 0.15);
+          ctx.lineTo(cx - s * 0.55, cy - s * 0.45);
+          ctx.lineTo(cx + s * 0.55, cy - s * 0.45);
+          ctx.lineTo(cx + s * 0.55, cy + s * 0.15);
+          ctx.stroke();
+
+          // Frosting drips on bottom tier
+          for (let i = -3; i <= 3; i++) {
+            const dx = i * s * 0.2;
+            const drip = s * (0.1 + Math.abs(i % 2) * 0.08);
+            ctx.beginPath();
+            ctx.moveTo(cx + dx - s * 0.1, cy + s * 0.15);
+            ctx.quadraticCurveTo(cx + dx, cy + s * 0.15 + drip, cx + dx + s * 0.1, cy + s * 0.15);
+            ctx.stroke();
+          }
+
+          // Frosting drips on top tier
+          for (let i = -2; i <= 2; i++) {
+            const dx = i * s * 0.2;
+            const drip = s * (0.08 + Math.abs(i % 2) * 0.06);
+            ctx.beginPath();
+            ctx.moveTo(cx + dx - s * 0.08, cy - s * 0.45);
+            ctx.quadraticCurveTo(cx + dx, cy - s * 0.45 + drip, cx + dx + s * 0.08, cy - s * 0.45);
+            ctx.stroke();
+          }
+
+          // Candles
+          const candlePositions = [-s * 0.3, 0, s * 0.3];
+          for (const px of candlePositions) {
+            ctx.beginPath();
+            ctx.moveTo(cx + px - s * 0.04, cy - s * 0.45);
+            ctx.lineTo(cx + px - s * 0.04, cy - s * 0.7);
+            ctx.lineTo(cx + px + s * 0.04, cy - s * 0.7);
+            ctx.lineTo(cx + px + s * 0.04, cy - s * 0.45);
+            ctx.stroke();
+
+            // Flame
+            ctx.beginPath();
+            ctx.moveTo(cx + px, cy - s * 0.7);
+            ctx.bezierCurveTo(cx + px - s * 0.06, cy - s * 0.8, cx + px + s * 0.06, cy - s * 0.85, cx + px, cy - s * 0.92);
+            ctx.bezierCurveTo(cx + px - s * 0.06, cy - s * 0.85, cx + px + s * 0.06, cy - s * 0.8, cx + px, cy - s * 0.7);
+            ctx.stroke();
+          }
+        }
+
+        function drawApple(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Apple body (slightly heart-shaped top)
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.55);
+          ctx.bezierCurveTo(cx - s * 0.6, cy - s * 0.75, cx - s * 1.0, cy - s * 0.1, cx - s * 0.55, cy + s * 0.45);
+          ctx.bezierCurveTo(cx - s * 0.3, cy + s * 0.85, cx - s * 0.05, cy + s * 0.9, cx, cy + s * 0.85);
+          ctx.bezierCurveTo(cx + s * 0.05, cy + s * 0.9, cx + s * 0.3, cy + s * 0.85, cx + s * 0.55, cy + s * 0.45);
+          ctx.bezierCurveTo(cx + s * 1.0, cy - s * 0.1, cx + s * 0.6, cy - s * 0.75, cx, cy - s * 0.55);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Stem
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.55);
+          ctx.quadraticCurveTo(cx + s * 0.08, cy - s * 0.75, cx + s * 0.05, cy - s * 0.9);
+          ctx.stroke();
+
+          // Leaf
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.05, cy - s * 0.78);
+          ctx.bezierCurveTo(cx + s * 0.3, cy - s * 1.0, cx + s * 0.55, cy - s * 0.85, cx + s * 0.4, cy - s * 0.65);
+          ctx.bezierCurveTo(cx + s * 0.3, cy - s * 0.7, cx + s * 0.15, cy - s * 0.7, cx + s * 0.05, cy - s * 0.78);
+          ctx.stroke();
+
+          // Leaf vein
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.08, cy - s * 0.78);
+          ctx.quadraticCurveTo(cx + s * 0.3, cy - s * 0.82, cx + s * 0.38, cy - s * 0.7);
+          ctx.stroke();
+
+          // Small highlight arc
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.3, cy - s * 0.15, s * 0.15, -Math.PI * 0.6, -Math.PI * 0.1);
+          ctx.stroke();
+        }
+
+        function drawCupcake(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Ribbed wrapper/cup (trapezoid shape)
+          const topW = s * 0.6;
+          const botW = s * 0.4;
+          const cupTop = cy + s * 0.05;
+          const cupBot = cy + s * 0.75;
+
+          ctx.beginPath();
+          ctx.moveTo(cx - topW, cupTop);
+          ctx.lineTo(cx - botW, cupBot);
+          ctx.lineTo(cx + botW, cupBot);
+          ctx.lineTo(cx + topW, cupTop);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Ribs on wrapper
+          for (let i = -4; i <= 4; i++) {
+            const tTop = (i + 5) / 10;
+            const tBot = (i + 5) / 10;
+            const x1 = cx - topW + tTop * topW * 2;
+            const x2 = cx - botW + tBot * botW * 2;
+            ctx.beginPath();
+            ctx.moveTo(x1, cupTop);
+            ctx.lineTo(x2, cupBot);
+            ctx.stroke();
+          }
+
+          // Swirled frosting
+          ctx.beginPath();
+          ctx.moveTo(cx - topW - s * 0.05, cupTop);
+          ctx.bezierCurveTo(cx - topW - s * 0.1, cupTop - s * 0.3, cx - s * 0.15, cupTop - s * 0.15, cx - s * 0.1, cupTop - s * 0.4);
+          ctx.bezierCurveTo(cx - s * 0.05, cupTop - s * 0.55, cx + s * 0.15, cupTop - s * 0.25, cx + s * 0.1, cupTop - s * 0.5);
+          ctx.bezierCurveTo(cx + s * 0.05, cupTop - s * 0.65, cx + s * 0.35, cupTop - s * 0.4, cx + s * 0.2, cupTop - s * 0.6);
+          ctx.bezierCurveTo(cx + s * 0.1, cupTop - s * 0.75, cx + s * 0.05, cupTop - s * 0.7, cx, cupTop - s * 0.85);
+          ctx.stroke();
+
+          // Other side of frosting
+          ctx.beginPath();
+          ctx.moveTo(cx + topW + s * 0.05, cupTop);
+          ctx.bezierCurveTo(cx + topW + s * 0.1, cupTop - s * 0.3, cx + s * 0.3, cupTop - s * 0.2, cx + s * 0.2, cupTop - s * 0.6);
+          ctx.stroke();
+
+          // Cherry on top
+          ctx.beginPath();
+          ctx.arc(cx, cupTop - s * 0.95, s * 0.12, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Cherry stem
+          ctx.beginPath();
+          ctx.moveTo(cx, cupTop - s * 1.07);
+          ctx.quadraticCurveTo(cx + s * 0.08, cupTop - s * 1.2, cx + s * 0.15, cupTop - s * 1.15);
+          ctx.stroke();
+        }
+
+        function drawCandy(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Candy body (oval)
+          ctx.beginPath();
+          ctx.ellipse(cx, cy, s * 0.55, s * 0.4, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Left twisted wrapper
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.55, cy - s * 0.15);
+          ctx.bezierCurveTo(cx - s * 0.75, cy - s * 0.35, cx - s * 0.95, cy - s * 0.25, cx - s * 1.1, cy - s * 0.4);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.55, cy + s * 0.15);
+          ctx.bezierCurveTo(cx - s * 0.75, cy + s * 0.05, cx - s * 0.95, cy - s * 0.05, cx - s * 1.1, cy - s * 0.15);
+          ctx.stroke();
+          // Wrapper twist lines left
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.7, cy - s * 0.28);
+          ctx.lineTo(cx - s * 0.7, cy + s * 0.08);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.85, cy - s * 0.32);
+          ctx.lineTo(cx - s * 0.85, cy);
+          ctx.stroke();
+
+          // Right twisted wrapper
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.55, cy - s * 0.15);
+          ctx.bezierCurveTo(cx + s * 0.75, cy - s * 0.35, cx + s * 0.95, cy - s * 0.25, cx + s * 1.1, cy - s * 0.4);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.55, cy + s * 0.15);
+          ctx.bezierCurveTo(cx + s * 0.75, cy + s * 0.05, cx + s * 0.95, cy - s * 0.05, cx + s * 1.1, cy - s * 0.15);
+          ctx.stroke();
+          // Wrapper twist lines right
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.7, cy - s * 0.28);
+          ctx.lineTo(cx + s * 0.7, cy + s * 0.08);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.85, cy - s * 0.32);
+          ctx.lineTo(cx + s * 0.85, cy);
+          ctx.stroke();
+
+          // Stripes on candy body
+          for (let i = -2; i <= 2; i++) {
+            const dx = i * s * 0.2;
+            ctx.beginPath();
+            ctx.moveTo(cx + dx, cy - s * 0.38);
+            ctx.quadraticCurveTo(cx + dx + s * 0.05, cy, cx + dx, cy + s * 0.38);
+            ctx.stroke();
+          }
+        }
+
+        function drawWhale(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Large round body
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.6, cy + s * 0.1);
+          ctx.bezierCurveTo(cx + s * 0.8, cy - s * 0.5, cx - s * 0.2, cy - s * 0.7, cx - s * 0.7, cy - s * 0.35);
+          ctx.bezierCurveTo(cx - s * 1.0, cy - s * 0.15, cx - s * 1.0, cy + s * 0.3, cx - s * 0.7, cy + s * 0.5);
+          ctx.bezierCurveTo(cx - s * 0.3, cy + s * 0.7, cx + s * 0.3, cy + s * 0.6, cx + s * 0.6, cy + s * 0.1);
+          ctx.stroke();
+
+          // Tail connection
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.6, cy + s * 0.1);
+          ctx.bezierCurveTo(cx + s * 0.85, cy - s * 0.05, cx + s * 0.9, cy + s * 0.05, cx + s * 1.0, cy - s * 0.15);
+          ctx.stroke();
+
+          // Tail flukes
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 1.0, cy - s * 0.15);
+          ctx.bezierCurveTo(cx + s * 1.15, cy - s * 0.45, cx + s * 0.85, cy - s * 0.5, cx + s * 1.0, cy - s * 0.15);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 1.0, cy - s * 0.15);
+          ctx.bezierCurveTo(cx + s * 1.2, cy - s * 0.05, cx + s * 1.15, cy + s * 0.2, cx + s * 1.0, cy - s * 0.15);
+          ctx.stroke();
+
+          // Eye (small filled circle)
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.55, cy - s * 0.15, s * 0.06, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Smile / mouth
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.7, cy + s * 0.05, s * 0.15, 0, Math.PI * 0.6);
+          ctx.stroke();
+
+          // Belly line
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.65, cy + s * 0.2);
+          ctx.bezierCurveTo(cx - s * 0.3, cy + s * 0.45, cx + s * 0.1, cy + s * 0.4, cx + s * 0.45, cy + s * 0.15);
+          ctx.stroke();
+
+          // Water spout
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.35, cy - s * 0.55);
+          ctx.quadraticCurveTo(cx - s * 0.4, cy - s * 0.8, cx - s * 0.55, cy - s * 0.9);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.35, cy - s * 0.55);
+          ctx.lineTo(cx - s * 0.35, cy - s * 0.75);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.35, cy - s * 0.55);
+          ctx.quadraticCurveTo(cx - s * 0.3, cy - s * 0.8, cx - s * 0.15, cy - s * 0.9);
+          ctx.stroke();
+        }
+
+        function drawOctopus(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Round head/mantle
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.3, s * 0.6, Math.PI * 0.85, Math.PI * 0.15, true);
+          ctx.stroke();
+
+          // Top of head dome
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.35, s * 0.58, Math.PI * 1.15, Math.PI * 1.85);
+          ctx.stroke();
+
+          // 8 curling tentacles
+          const tentacleAngles = [-0.85, -0.6, -0.35, -0.15, 0.15, 0.35, 0.6, 0.85];
+          for (let i = 0; i < tentacleAngles.length; i++) {
+            const angle = tentacleAngles[i];
+            const startX = cx + Math.sin(angle * Math.PI) * s * 0.55;
+            const startY = cy + s * 0.15;
+            const dir = angle > 0 ? 1 : -1;
+            const spread = Math.abs(angle);
+
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.bezierCurveTo(
+              startX + dir * s * 0.15, startY + s * 0.4,
+              startX + dir * s * spread * 0.6, startY + s * 0.7,
+              startX + dir * s * spread * 0.4, startY + s * 0.85
+            );
+            ctx.bezierCurveTo(
+              startX + dir * s * spread * 0.2, startY + s * 0.95,
+              startX + dir * s * spread * 0.05, startY + s * 0.85,
+              startX + dir * s * spread * 0.15, startY + s * 0.75
+            );
+            ctx.stroke();
+          }
+
+          // Big cute eyes (circles with filled pupils)
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.22, cy - s * 0.35, s * 0.16, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.22, cy - s * 0.35, s * 0.16, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Pupils
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.2, cy - s * 0.33, s * 0.07, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.24, cy - s * 0.33, s * 0.07, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Smile
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.1, s * 0.2, Math.PI * 0.15, Math.PI * 0.85);
+          ctx.stroke();
+        }
+
+        function drawSeahorse(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // S-shaped body - front curve
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy - s * 0.85);
+          ctx.bezierCurveTo(cx - s * 0.4, cy - s * 0.9, cx - s * 0.55, cy - s * 0.55, cx - s * 0.35, cy - s * 0.3);
+          ctx.bezierCurveTo(cx - s * 0.15, cy - s * 0.05, cx - s * 0.05, cy + s * 0.2, cx - s * 0.1, cy + s * 0.45);
+          ctx.bezierCurveTo(cx - s * 0.15, cy + s * 0.7, cx - s * 0.05, cy + s * 0.9, cx + s * 0.15, cy + s * 1.0);
+          ctx.bezierCurveTo(cx + s * 0.3, cy + s * 1.05, cx + s * 0.35, cy + s * 0.9, cx + s * 0.25, cy + s * 0.8);
+          ctx.stroke();
+
+          // S-shaped body - back curve
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy - s * 0.85);
+          ctx.bezierCurveTo(cx + s * 0.35, cy - s * 0.8, cx + s * 0.3, cy - s * 0.55, cx + s * 0.15, cy - s * 0.3);
+          ctx.bezierCurveTo(cx + s * 0.05, cy - s * 0.05, cx + s * 0.15, cy + s * 0.2, cx + s * 0.2, cy + s * 0.45);
+          ctx.bezierCurveTo(cx + s * 0.25, cy + s * 0.65, cx + s * 0.3, cy + s * 0.75, cx + s * 0.25, cy + s * 0.8);
+          ctx.stroke();
+
+          // Snout
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.35, cy - s * 0.3);
+          ctx.bezierCurveTo(cx - s * 0.55, cy - s * 0.35, cx - s * 0.65, cy - s * 0.45, cx - s * 0.7, cy - s * 0.5);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.4, cy - s * 0.4);
+          ctx.bezierCurveTo(cx - s * 0.55, cy - s * 0.42, cx - s * 0.65, cy - s * 0.48, cx - s * 0.7, cy - s * 0.5);
+          ctx.stroke();
+
+          // Eye
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.22, cy - s * 0.5, s * 0.06, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Dorsal fin ridge (spiky bumps along back)
+          const finPoints = [
+            { x: 0.25, y: -0.65 }, { x: 0.4, y: -0.6 },
+            { x: 0.28, y: -0.5 }, { x: 0.42, y: -0.45 },
+            { x: 0.25, y: -0.35 }, { x: 0.38, y: -0.25 },
+            { x: 0.2, y: -0.15 }
+          ];
+          ctx.beginPath();
+          ctx.moveTo(cx + s * finPoints[0].x, cy + s * finPoints[0].y);
+          for (let i = 1; i < finPoints.length; i++) {
+            ctx.lineTo(cx + s * finPoints[i].x, cy + s * finPoints[i].y);
+          }
+          ctx.stroke();
+
+          // Belly ridges (horizontal lines)
+          for (let i = 0; i < 5; i++) {
+            const yy = cy - s * 0.15 + i * s * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(cx - s * 0.08, yy);
+            ctx.lineTo(cx + s * 0.1, yy);
+            ctx.stroke();
+          }
+        }
+
+        function drawStarfish(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // 5-armed starfish with slightly curved arms
+          const arms = 5;
+          const outerR = s * 1.0;
+          const innerR = s * 0.4;
+
+          ctx.beginPath();
+          for (let i = 0; i < arms; i++) {
+            const outerAngle = (i * 2 * Math.PI / arms) - Math.PI / 2;
+            const innerAngle = ((i + 0.5) * 2 * Math.PI / arms) - Math.PI / 2;
+            const nextOuterAngle = ((i + 1) * 2 * Math.PI / arms) - Math.PI / 2;
+
+            const ox = cx + Math.cos(outerAngle) * outerR;
+            const oy = cy + Math.sin(outerAngle) * outerR;
+            const ix = cx + Math.cos(innerAngle) * innerR;
+            const iy = cy + Math.sin(innerAngle) * innerR;
+
+            if (i === 0) {
+              ctx.moveTo(ox, oy);
+            }
+
+            // Curve from outer point to inner valley
+            const midAngle1 = (outerAngle + innerAngle) / 2;
+            const cp1x = cx + Math.cos(midAngle1) * outerR * 0.65;
+            const cp1y = cy + Math.sin(midAngle1) * outerR * 0.65;
+            ctx.quadraticCurveTo(cp1x, cp1y, ix, iy);
+
+            // Curve from inner valley to next outer point
+            const nox = cx + Math.cos(nextOuterAngle) * outerR;
+            const noy = cy + Math.sin(nextOuterAngle) * outerR;
+            const midAngle2 = (innerAngle + nextOuterAngle) / 2;
+            const cp2x = cx + Math.cos(midAngle2) * outerR * 0.65;
+            const cp2y = cy + Math.sin(midAngle2) * outerR * 0.65;
+            ctx.quadraticCurveTo(cp2x, cp2y, nox, noy);
+          }
+          ctx.closePath();
+          ctx.stroke();
+
+          // Center circle
+          ctx.beginPath();
+          ctx.arc(cx, cy, s * 0.15, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Dots/circles pattern on each arm
+          for (let i = 0; i < arms; i++) {
+            const angle = (i * 2 * Math.PI / arms) - Math.PI / 2;
+            for (let j = 1; j <= 3; j++) {
+              const r = s * (0.2 + j * 0.2);
+              const dotX = cx + Math.cos(angle) * r;
+              const dotY = cy + Math.sin(angle) * r;
+              const dotR = s * (0.06 - j * 0.01);
+              ctx.beginPath();
+              ctx.arc(dotX, dotY, dotR, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+          }
+        }
+
+        function drawTurtle(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Dome shell (large ellipse)
+          ctx.beginPath();
+          ctx.ellipse(cx, cy - s * 0.05, s * 0.7, s * 0.55, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Hexagonal pattern on shell - center hex
+          ctx.beginPath();
+          for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI * 2 / 6) - Math.PI / 6;
+            const hx = cx + Math.cos(angle) * s * 0.22;
+            const hy = cy - s * 0.05 + Math.sin(angle) * s * 0.18;
+            if (i === 0) ctx.moveTo(hx, hy);
+            else ctx.lineTo(hx, hy);
+          }
+          ctx.closePath();
+          ctx.stroke();
+
+          // Lines from hex corners to shell edge
+          for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI * 2 / 6) - Math.PI / 6;
+            const hx = cx + Math.cos(angle) * s * 0.22;
+            const hy = cy - s * 0.05 + Math.sin(angle) * s * 0.18;
+            const ex = cx + Math.cos(angle) * s * 0.65;
+            const ey = cy - s * 0.05 + Math.sin(angle) * s * 0.5;
+            ctx.beginPath();
+            ctx.moveTo(hx, hy);
+            ctx.lineTo(ex, ey);
+            ctx.stroke();
+          }
+
+          // Head
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.9, cy + s * 0.05, s * 0.22, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Eye on head
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.95, cy - s * 0.02, s * 0.04, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Front right leg
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.5, cy + s * 0.35);
+          ctx.bezierCurveTo(cx + s * 0.6, cy + s * 0.65, cx + s * 0.75, cy + s * 0.7, cx + s * 0.65, cy + s * 0.75);
+          ctx.bezierCurveTo(cx + s * 0.55, cy + s * 0.8, cx + s * 0.45, cy + s * 0.6, cx + s * 0.35, cy + s * 0.45);
+          ctx.stroke();
+
+          // Front left leg
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.5, cy - s * 0.35);
+          ctx.bezierCurveTo(cx + s * 0.6, cy - s * 0.65, cx + s * 0.75, cy - s * 0.7, cx + s * 0.65, cy - s * 0.75);
+          ctx.bezierCurveTo(cx + s * 0.55, cy - s * 0.8, cx + s * 0.45, cy - s * 0.6, cx + s * 0.35, cy - s * 0.45);
+          ctx.stroke();
+
+          // Back right leg
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.45, cy + s * 0.35);
+          ctx.bezierCurveTo(cx - s * 0.55, cy + s * 0.6, cx - s * 0.65, cy + s * 0.65, cx - s * 0.55, cy + s * 0.7);
+          ctx.bezierCurveTo(cx - s * 0.45, cy + s * 0.75, cx - s * 0.4, cy + s * 0.55, cx - s * 0.35, cy + s * 0.42);
+          ctx.stroke();
+
+          // Back left leg
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.45, cy - s * 0.35);
+          ctx.bezierCurveTo(cx - s * 0.55, cy - s * 0.6, cx - s * 0.65, cy - s * 0.65, cx - s * 0.55, cy - s * 0.7);
+          ctx.bezierCurveTo(cx - s * 0.45, cy - s * 0.75, cx - s * 0.4, cy - s * 0.55, cx - s * 0.35, cy - s * 0.42);
+          ctx.stroke();
+
+          // Small tail
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.65, cy + s * 0.05);
+          ctx.bezierCurveTo(cx - s * 0.85, cy + s * 0.08, cx - s * 0.9, cy + s * 0.02, cx - s * 0.85, cy - s * 0.02);
+          ctx.stroke();
+        }
+
+        function drawShell(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Outer shell shape (nautilus-like)
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.8, cy + s * 0.6);
+          ctx.bezierCurveTo(cx + s * 1.0, cy + s * 0.2, cx + s * 0.9, cy - s * 0.4, cx + s * 0.5, cy - s * 0.7);
+          ctx.bezierCurveTo(cx + s * 0.1, cy - s * 0.9, cx - s * 0.4, cy - s * 0.8, cx - s * 0.7, cy - s * 0.45);
+          ctx.bezierCurveTo(cx - s * 0.95, cy - s * 0.1, cx - s * 0.85, cy + s * 0.35, cx - s * 0.5, cy + s * 0.6);
+          ctx.bezierCurveTo(cx - s * 0.2, cy + s * 0.8, cx + s * 0.3, cy + s * 0.85, cx + s * 0.8, cy + s * 0.6);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Concentric spiral
+          // First spiral turn
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.55, cy + s * 0.4);
+          ctx.bezierCurveTo(cx + s * 0.65, cy + s * 0.1, cx + s * 0.55, cy - s * 0.2, cx + s * 0.3, cy - s * 0.4);
+          ctx.bezierCurveTo(cx + s * 0.05, cy - s * 0.55, cx - s * 0.25, cy - s * 0.45, cx - s * 0.4, cy - s * 0.2);
+          ctx.bezierCurveTo(cx - s * 0.55, cy + s * 0.05, cx - s * 0.4, cy + s * 0.35, cx - s * 0.15, cy + s * 0.45);
+          ctx.bezierCurveTo(cx + s * 0.05, cy + s * 0.55, cx + s * 0.3, cy + s * 0.5, cx + s * 0.55, cy + s * 0.4);
+          ctx.stroke();
+
+          // Second spiral turn (tighter)
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.3, cy + s * 0.2);
+          ctx.bezierCurveTo(cx + s * 0.35, cy + s * 0.05, cx + s * 0.3, cy - s * 0.1, cx + s * 0.15, cy - s * 0.2);
+          ctx.bezierCurveTo(cx, cy - s * 0.3, cx - s * 0.15, cy - s * 0.2, cx - s * 0.2, cy - s * 0.05);
+          ctx.bezierCurveTo(cx - s * 0.25, cy + s * 0.1, cx - s * 0.15, cy + s * 0.22, cx, cy + s * 0.25);
+          ctx.bezierCurveTo(cx + s * 0.1, cy + s * 0.28, cx + s * 0.2, cy + s * 0.25, cx + s * 0.3, cy + s * 0.2);
+          ctx.stroke();
+
+          // Innermost spiral
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.1, cy + s * 0.08);
+          ctx.bezierCurveTo(cx + s * 0.12, cy, cx + s * 0.08, cy - s * 0.06, cx, cy - s * 0.08);
+          ctx.bezierCurveTo(cx - s * 0.06, cy - s * 0.1, cx - s * 0.1, cy - s * 0.04, cx - s * 0.08, cy + s * 0.02);
+          ctx.bezierCurveTo(cx - s * 0.05, cy + s * 0.08, cx + s * 0.02, cy + s * 0.1, cx + s * 0.1, cy + s * 0.08);
+          ctx.stroke();
+
+          // Ridged lines radiating from spiral center outward
+          const ridgeAngles = [0.3, 0.8, 1.3, 1.8, 2.3, 2.8, 3.3, 3.8, 4.3, 4.8, 5.3, 5.8];
+          for (const angle of ridgeAngles) {
+            const innerDist = s * 0.25;
+            const outerDist = s * 0.7;
+            const rx1 = cx + Math.cos(angle) * innerDist;
+            const ry1 = cy + Math.sin(angle) * innerDist * 0.75;
+            const rx2 = cx + Math.cos(angle) * outerDist;
+            const ry2 = cy + Math.sin(angle) * outerDist * 0.75;
+            ctx.beginPath();
+            ctx.moveTo(rx1, ry1);
+            ctx.lineTo(rx2, ry2);
+            ctx.stroke();
+          }
+        }
+
+        function drawPlanet(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Main planet circle
+          ctx.beginPath();
+          ctx.arc(cx, cy, s * 0.6, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Ring (angled ellipse)
+          ctx.beginPath();
+          ctx.ellipse(cx, cy, s * 1.1, s * 0.25, -0.3, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Surface band lines
+          ctx.beginPath();
+          ctx.ellipse(cx, cy - s * 0.15, s * 0.58, s * 0.08, 0, 0, Math.PI);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.ellipse(cx, cy + s * 0.1, s * 0.55, s * 0.07, 0, 0, Math.PI);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.ellipse(cx, cy + s * 0.3, s * 0.45, s * 0.06, 0, 0, Math.PI);
+          ctx.stroke();
+
+          // Craters
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.2, cy - s * 0.3, s * 0.08, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.25, cy + s * 0.05, s * 0.1, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.05, cy + s * 0.35, s * 0.06, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        function drawAstronaut(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Helmet (round)
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.45, s * 0.4, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Visor
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.42, s * 0.28, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Visor reflection line
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.15, cy - s * 0.55);
+          ctx.quadraticCurveTo(cx - s * 0.05, cy - s * 0.5, cx + s * 0.05, cy - s * 0.55);
+          ctx.stroke();
+
+          // Body (boxy suit)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.35, cy - s * 0.08);
+          ctx.lineTo(cx + s * 0.35, cy - s * 0.08);
+          ctx.lineTo(cx + s * 0.35, cy + s * 0.45);
+          ctx.lineTo(cx - s * 0.35, cy + s * 0.45);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Backpack (round)
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.5, cy + s * 0.15, s * 0.18, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Left arm
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.35, cy + s * 0.0);
+          ctx.lineTo(cx - s * 0.6, cy + s * 0.15);
+          ctx.lineTo(cx - s * 0.65, cy + s * 0.35);
+          ctx.stroke();
+
+          // Right arm
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.35, cy + s * 0.0);
+          ctx.lineTo(cx + s * 0.55, cy + s * 0.3);
+          ctx.stroke();
+
+          // Left leg and boot
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.2, cy + s * 0.45);
+          ctx.lineTo(cx - s * 0.25, cy + s * 0.75);
+          ctx.lineTo(cx - s * 0.4, cy + s * 0.78);
+          ctx.lineTo(cx - s * 0.4, cy + s * 0.88);
+          ctx.lineTo(cx - s * 0.1, cy + s * 0.88);
+          ctx.lineTo(cx - s * 0.1, cy + s * 0.75);
+          ctx.stroke();
+
+          // Right leg and boot
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.2, cy + s * 0.45);
+          ctx.lineTo(cx + s * 0.25, cy + s * 0.75);
+          ctx.lineTo(cx + s * 0.1, cy + s * 0.78);
+          ctx.lineTo(cx + s * 0.1, cy + s * 0.88);
+          ctx.lineTo(cx + s * 0.4, cy + s * 0.88);
+          ctx.lineTo(cx + s * 0.4, cy + s * 0.75);
+          ctx.stroke();
+        }
+
+        function drawUfo(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Dome on top
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.2, s * 0.35, Math.PI, 0);
+          ctx.stroke();
+
+          // Disc body (ellipse)
+          ctx.beginPath();
+          ctx.ellipse(cx, cy - s * 0.05, s * 0.85, s * 0.2, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Disc rim line
+          ctx.beginPath();
+          ctx.ellipse(cx, cy + s * 0.05, s * 0.75, s * 0.12, 0, 0, Math.PI);
+          ctx.stroke();
+
+          // Landing lights (circles underneath)
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.4, cy + s * 0.15, s * 0.07, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx, cy + s * 0.18, s * 0.07, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.4, cy + s * 0.15, s * 0.07, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Beam lines below
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.3, cy + s * 0.25);
+          ctx.lineTo(cx - s * 0.55, cy + s * 0.9);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.25);
+          ctx.lineTo(cx, cy + s * 0.9);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.3, cy + s * 0.25);
+          ctx.lineTo(cx + s * 0.55, cy + s * 0.9);
+          ctx.stroke();
+
+          // Bottom beam line
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.5, cy + s * 0.85);
+          ctx.lineTo(cx + s * 0.5, cy + s * 0.85);
+          ctx.stroke();
+        }
+
+        function drawMoon(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Crescent moon - outer arc
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.1, cy, s * 0.7, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Inner arc to create crescent effect
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.25, cy - s * 0.1, s * 0.55, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Craters on the visible crescent
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.45, cy - s * 0.2, s * 0.08, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.55, cy + s * 0.15, s * 0.06, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.3, cy + s * 0.4, s * 0.07, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Sleeping face - closed eye (curved line)
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.35, cy - s * 0.05, s * 0.08, 0, Math.PI);
+          ctx.stroke();
+
+          // Smile
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.35, cy + s * 0.15, s * 0.1, 0.2, Math.PI - 0.2);
+          ctx.stroke();
+
+          // Small stars around
+          const drawStar = (x, y, r) => {
+            ctx.beginPath();
+            ctx.moveTo(x, y - r);
+            ctx.lineTo(x, y + r);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x - r, y);
+            ctx.lineTo(x + r, y);
+            ctx.stroke();
+          };
+
+          drawStar(cx + s * 0.7, cy - s * 0.6, s * 0.08);
+          drawStar(cx + s * 0.9, cy - s * 0.2, s * 0.06);
+          drawStar(cx + s * 0.6, cy + s * 0.5, s * 0.07);
+          drawStar(cx - s * 0.1, cy - s * 0.85, s * 0.05);
+          drawStar(cx + s * 0.3, cy + s * 0.8, s * 0.06);
+        }
+
+        function drawSatellite(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Boxy body
+          ctx.beginPath();
+          ctx.rect(cx - s * 0.2, cy - s * 0.2, s * 0.4, s * 0.4);
+          ctx.stroke();
+
+          // Body detail lines
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.2, cy);
+          ctx.lineTo(cx + s * 0.2, cy);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.2);
+          ctx.lineTo(cx, cy + s * 0.2);
+          ctx.stroke();
+
+          // Left solar panel
+          ctx.beginPath();
+          ctx.rect(cx - s * 0.85, cy - s * 0.25, s * 0.55, s * 0.5);
+          ctx.stroke();
+
+          // Left panel grid lines (vertical)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.575, cy - s * 0.25);
+          ctx.lineTo(cx - s * 0.575, cy + s * 0.25);
+          ctx.stroke();
+
+          // Left panel grid lines (horizontal)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.85, cy);
+          ctx.lineTo(cx - s * 0.3, cy);
+          ctx.stroke();
+
+          // Right solar panel
+          ctx.beginPath();
+          ctx.rect(cx + s * 0.3, cy - s * 0.25, s * 0.55, s * 0.5);
+          ctx.stroke();
+
+          // Right panel grid lines (vertical)
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.575, cy - s * 0.25);
+          ctx.lineTo(cx + s * 0.575, cy + s * 0.25);
+          ctx.stroke();
+
+          // Right panel grid lines (horizontal)
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.3, cy);
+          ctx.lineTo(cx + s * 0.85, cy);
+          ctx.stroke();
+
+          // Antenna dish on top
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.45, s * 0.15, Math.PI, 0);
+          ctx.stroke();
+
+          // Antenna rod
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.2);
+          ctx.lineTo(cx, cy - s * 0.45);
+          ctx.stroke();
+
+          // Small antenna tip
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.6);
+          ctx.lineTo(cx, cy - s * 0.75);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.77, s * 0.03, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        function drawComet(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Comet head/nucleus
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.35, cy - s * 0.1, s * 0.22, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Streaming tail - upper curve
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy - s * 0.2);
+          ctx.bezierCurveTo(cx - s * 0.2, cy - s * 0.35, cx - s * 0.6, cy - s * 0.5, cx - s * 1.0, cy - s * 0.3);
+          ctx.stroke();
+
+          // Streaming tail - lower curve
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.15, cy + s * 0.05);
+          ctx.bezierCurveTo(cx - s * 0.2, cy + s * 0.15, cx - s * 0.6, cy + s * 0.35, cx - s * 1.0, cy + s * 0.2);
+          ctx.stroke();
+
+          // Middle tail line
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.13, cy - s * 0.08);
+          ctx.bezierCurveTo(cx - s * 0.3, cy - s * 0.1, cx - s * 0.65, cy - s * 0.05, cx - s * 0.95, cy - s * 0.05);
+          ctx.stroke();
+
+          // Sparkle dots around head
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.65, cy - s * 0.3, s * 0.03, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.6, cy + s * 0.15, s * 0.025, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.2, cy - s * 0.35, s * 0.03, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.5, cy - s * 0.4, s * 0.02, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.7, cy + s * 0.0, s * 0.025, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        function drawBalloon(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Balloon body (oval)
+          ctx.beginPath();
+          ctx.ellipse(cx, cy - s * 0.25, s * 0.45, s * 0.6, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Tied knot at bottom (small triangle)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.06, cy + s * 0.35);
+          ctx.lineTo(cx, cy + s * 0.45);
+          ctx.lineTo(cx + s * 0.06, cy + s * 0.35);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Long curving string
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.45);
+          ctx.quadraticCurveTo(cx + s * 0.2, cy + s * 0.65, cx - s * 0.1, cy + s * 0.8);
+          ctx.quadraticCurveTo(cx - s * 0.25, cy + s * 0.9, cx + s * 0.05, cy + s * 1.1);
+          ctx.stroke();
+
+          // Highlight oval on balloon
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.15, cy - s * 0.4, s * 0.08, s * 0.18, -0.3, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        function drawHeart(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Large heart shape
+          const drawHeartShape = (ox, oy, scale) => {
+            ctx.beginPath();
+            ctx.moveTo(cx + ox, cy + s * 0.2 * scale + oy);
+            ctx.bezierCurveTo(cx + ox, cy - s * 0.1 * scale + oy, cx - s * 0.5 * scale + ox, cy - s * 0.4 * scale + oy, cx - s * 0.5 * scale + ox, cy - s * 0.1 * scale + oy);
+            ctx.bezierCurveTo(cx - s * 0.5 * scale + ox, cy + s * 0.15 * scale + oy, cx + ox, cy + s * 0.35 * scale + oy, cx + ox, cy + s * 0.7 * scale + oy);
+            ctx.bezierCurveTo(cx + ox, cy + s * 0.35 * scale + oy, cx + s * 0.5 * scale + ox, cy + s * 0.15 * scale + oy, cx + s * 0.5 * scale + ox, cy - s * 0.1 * scale + oy);
+            ctx.bezierCurveTo(cx + s * 0.5 * scale + ox, cy - s * 0.4 * scale + oy, cx + ox, cy - s * 0.1 * scale + oy, cx + ox, cy + s * 0.2 * scale + oy);
+            ctx.stroke();
+          };
+
+          drawHeartShape(0, 0, 1.4);
+
+          // Decorative inner heart outline
+          drawHeartShape(0, 0, 0.85);
+
+          // Small floating hearts
+          drawHeartShape(-s * 0.75, -s * 0.5, 0.25);
+          drawHeartShape(s * 0.8, -s * 0.45, 0.2);
+          drawHeartShape(-s * 0.6, s * 0.55, 0.18);
+          drawHeartShape(s * 0.7, s * 0.5, 0.22);
+        }
+
+        function drawGuitar(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Lower body (larger circle of figure-8)
+          ctx.beginPath();
+          ctx.ellipse(cx, cy + s * 0.35, s * 0.45, s * 0.45, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Upper body (smaller circle of figure-8)
+          ctx.beginPath();
+          ctx.ellipse(cx, cy - s * 0.05, s * 0.32, s * 0.3, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Waist curves (connecting the two)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.32, cy - s * 0.05);
+          ctx.quadraticCurveTo(cx - s * 0.22, cy + s * 0.12, cx - s * 0.45, cy + s * 0.35);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.32, cy - s * 0.05);
+          ctx.quadraticCurveTo(cx + s * 0.22, cy + s * 0.12, cx + s * 0.45, cy + s * 0.35);
+          ctx.stroke();
+
+          // Sound hole
+          ctx.beginPath();
+          ctx.arc(cx, cy + s * 0.3, s * 0.12, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Neck
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.1, cy - s * 0.3);
+          ctx.lineTo(cx - s * 0.1, cy - s * 0.85);
+          ctx.lineTo(cx + s * 0.1, cy - s * 0.85);
+          ctx.lineTo(cx + s * 0.1, cy - s * 0.3);
+          ctx.stroke();
+
+          // Frets
+          for (let i = 1; i <= 4; i++) {
+            const fy = cy - s * 0.3 - (s * 0.55 * i / 5);
+            ctx.beginPath();
+            ctx.moveTo(cx - s * 0.1, fy);
+            ctx.lineTo(cx + s * 0.1, fy);
+            ctx.stroke();
+          }
+
+          // Headstock
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.12, cy - s * 0.85);
+          ctx.lineTo(cx - s * 0.14, cy - s * 1.05);
+          ctx.lineTo(cx + s * 0.14, cy - s * 1.05);
+          ctx.lineTo(cx + s * 0.12, cy - s * 0.85);
+          ctx.stroke();
+
+          // Tuning pegs (small circles)
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.18, cy - s * 0.9, s * 0.03, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.18, cy - s * 0.96, s * 0.03, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.18, cy - s * 0.9, s * 0.03, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.18, cy - s * 0.96, s * 0.03, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Strings (simplified - 2 lines)
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.03, cy - s * 0.85);
+          ctx.lineTo(cx - s * 0.03, cy + s * 0.6);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.03, cy - s * 0.85);
+          ctx.lineTo(cx + s * 0.03, cy + s * 0.6);
+          ctx.stroke();
+        }
+
+        function drawPresent(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Main box
+          ctx.beginPath();
+          ctx.rect(cx - s * 0.55, cy - s * 0.15, s * 1.1, s * 0.8);
+          ctx.stroke();
+
+          // Lid (slightly wider, offset up)
+          ctx.beginPath();
+          ctx.rect(cx - s * 0.6, cy - s * 0.35, s * 1.2, s * 0.25);
+          ctx.stroke();
+
+          // Vertical ribbon
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.08, cy - s * 0.35);
+          ctx.lineTo(cx - s * 0.08, cy + s * 0.65);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.08, cy - s * 0.35);
+          ctx.lineTo(cx + s * 0.08, cy + s * 0.65);
+          ctx.stroke();
+
+          // Horizontal ribbon
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.55, cy + s * 0.2);
+          ctx.lineTo(cx - s * 0.08, cy + s * 0.2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 0.08, cy + s * 0.2);
+          ctx.lineTo(cx + s * 0.55, cy + s * 0.2);
+          ctx.stroke();
+
+          // Bow - left loop
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.35);
+          ctx.bezierCurveTo(cx - s * 0.35, cy - s * 0.5, cx - s * 0.4, cy - s * 0.75, cx, cy - s * 0.55);
+          ctx.stroke();
+
+          // Bow - right loop
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.35);
+          ctx.bezierCurveTo(cx + s * 0.35, cy - s * 0.5, cx + s * 0.4, cy - s * 0.75, cx, cy - s * 0.55);
+          ctx.stroke();
+
+          // Bow center knot
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.4, s * 0.06, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Decorative dots/circles on box
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.3, cy + s * 0.0, s * 0.04, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.3, cy + s * 0.45, s * 0.04, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.35, cy + s * 0.5, s * 0.04, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.35, cy + s * 0.05, s * 0.04, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        function drawKite(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Diamond-shaped kite
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.8);
+          ctx.lineTo(cx + s * 0.45, cy - s * 0.15);
+          ctx.lineTo(cx, cy + s * 0.5);
+          ctx.lineTo(cx - s * 0.45, cy - s * 0.15);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Cross frame - vertical
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.8);
+          ctx.lineTo(cx, cy + s * 0.5);
+          ctx.stroke();
+
+          // Cross frame - horizontal
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.45, cy - s * 0.15);
+          ctx.lineTo(cx + s * 0.45, cy - s * 0.15);
+          ctx.stroke();
+
+          // Decorative pattern inside - top triangle
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.2, cy - s * 0.15);
+          ctx.lineTo(cx, cy - s * 0.5);
+          ctx.lineTo(cx + s * 0.2, cy - s * 0.15);
+          ctx.stroke();
+
+          // Decorative pattern inside - small diamond
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.35);
+          ctx.lineTo(cx + s * 0.12, cy - s * 0.15);
+          ctx.lineTo(cx, cy + s * 0.05);
+          ctx.lineTo(cx - s * 0.12, cy - s * 0.15);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Long tail
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + s * 0.5);
+          ctx.quadraticCurveTo(cx + s * 0.3, cy + s * 0.7, cx - s * 0.1, cy + s * 0.9);
+          ctx.quadraticCurveTo(cx - s * 0.35, cy + s * 1.05, cx + s * 0.1, cy + s * 1.2);
+          ctx.stroke();
+
+          // Bows on tail
+          const drawBow = (x, y) => {
+            ctx.beginPath();
+            ctx.moveTo(x - s * 0.1, y - s * 0.04);
+            ctx.lineTo(x, y + s * 0.02);
+            ctx.lineTo(x + s * 0.1, y - s * 0.04);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x - s * 0.1, y + s * 0.04);
+            ctx.lineTo(x, y - s * 0.02);
+            ctx.lineTo(x + s * 0.1, y + s * 0.04);
+            ctx.stroke();
+          };
+
+          drawBow(cx + s * 0.1, cy + s * 0.68);
+          drawBow(cx - s * 0.2, cy + s * 0.95);
+          drawBow(cx + s * 0.0, cy + s * 1.15);
+        }
+
+        function drawTeddy(ctx, w, h) {
+          const s = Math.min(w, h) * 0.35;
+          const cx = w / 2, cy = h / 2;
+          ctx.strokeStyle = '#333';
+          ctx.lineWidth = Math.max(2, s * 0.04);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Round body
+          ctx.beginPath();
+          ctx.ellipse(cx, cy + s * 0.3, s * 0.5, s * 0.55, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Round head
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.35, s * 0.38, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Left ear
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.32, cy - s * 0.65, s * 0.15, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Left inner ear
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.32, cy - s * 0.65, s * 0.08, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Right ear
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.32, cy - s * 0.65, s * 0.15, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Right inner ear
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.32, cy - s * 0.65, s * 0.08, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Left arm
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.55, cy + s * 0.15, s * 0.15, s * 0.3, 0.3, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Right arm
+          ctx.beginPath();
+          ctx.ellipse(cx + s * 0.55, cy + s * 0.15, s * 0.15, s * 0.3, -0.3, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Left leg
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.28, cy + s * 0.8, s * 0.2, s * 0.15, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Right leg
+          ctx.beginPath();
+          ctx.ellipse(cx + s * 0.28, cy + s * 0.8, s * 0.2, s * 0.15, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Snout circle
+          ctx.beginPath();
+          ctx.ellipse(cx, cy - s * 0.25, s * 0.15, s * 0.12, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Eyes (small filled dots)
+          ctx.beginPath();
+          ctx.arc(cx - s * 0.12, cy - s * 0.4, s * 0.04, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(cx + s * 0.12, cy - s * 0.4, s * 0.04, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Nose (small filled triangle)
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.28);
+          ctx.lineTo(cx - s * 0.05, cy - s * 0.22);
+          ctx.lineTo(cx + s * 0.05, cy - s * 0.22);
+          ctx.closePath();
+          ctx.fill();
+
+          // Mouth
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.22);
+          ctx.lineTo(cx, cy - s * 0.17);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.17, s * 0.06, 0, Math.PI);
+          ctx.stroke();
+
+          // Bow tie
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.02);
+          ctx.lineTo(cx - s * 0.15, cy - s * 0.1);
+          ctx.lineTo(cx - s * 0.15, cy + s * 0.06);
+          ctx.closePath();
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - s * 0.02);
+          ctx.lineTo(cx + s * 0.15, cy - s * 0.1);
+          ctx.lineTo(cx + s * 0.15, cy + s * 0.06);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Bow tie center knot
+          ctx.beginPath();
+          ctx.arc(cx, cy - s * 0.02, s * 0.04, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+
         // Init
         window.addEventListener('load', () => {
             generateUI();
@@ -5561,11 +9558,20 @@
 
             // Initialize paint canvas
             initPaintCanvas();
+
+            // Initialize new paint features
+            initPhotoUpload();
+            coloringEngine.initColors();
+            coloringEngine.initBrushSlider();
+            renderColoringCategoryTabs();
+            renderColoringGrid();
         });
 
         window.addEventListener('resize', () => {
             resizeCanvas();
             resizePaintCanvas();
+            if (currentPaintMode === 'colorphoto') resizePhotoCanvas();
+            if (currentPaintMode === 'coloringbook') resizeColoringCanvas();
         });
     </script>
 </body>
