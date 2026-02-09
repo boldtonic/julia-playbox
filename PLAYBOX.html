@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Julia's Playbox</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
     <style>
         * {
             margin: 0;
@@ -3767,15 +3768,16 @@
             return new Promise((resolve) => {
                 const howl = new Howl({
                     src: [freesoundData.url],
-                    html5: true,
+                    html5: false,
+                    format: ['mp3'],
                     volume: 0.8,
                     rate: loopSettings.speed,
                     onload: () => {
                         loadedSounds[cacheKey] = howl;
                         resolve(howl);
                     },
-                    onloaderror: () => {
-                        console.error('Failed to load sound:', soundInfo.name);
+                    onloaderror: (id, err) => {
+                        console.error('Failed to load sound:', soundInfo.name, err);
                         resolve(null);
                     }
                 });
@@ -4393,17 +4395,19 @@
             renderSoundGrid();
         }
 
+        // Detect touch-only devices (no mouse)
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
         function renderSoundGrid() {
             const container = document.getElementById('soundGrid');
             const category = soundCategories[currentCategory];
 
             container.innerHTML = category.sounds.map((sound, i) => `
-                <button class="sound-btn" style="background: ${sound.color}" title="${sound.name} (drag to Beat Maker!)"
-                    draggable="true"
+                <button class="sound-btn" style="background: ${sound.color}" title="${sound.name}${!isTouchDevice ? ' (drag to Beat Maker!)' : ''}"
+                    ${!isTouchDevice ? 'draggable="true"' : ''}
                     onclick="handleSoundClick(${i}, this)"
                     oncontextmenu="event.preventDefault(); openFxPanel(soundCategories['${currentCategory}'].sounds[${i}])"
-                    ondragstart="handleDragStart(event, ${i})"
-                    ondragend="handleDragEnd(event)"
+                    ${!isTouchDevice ? `ondragstart="handleDragStart(event, ${i})" ondragend="handleDragEnd(event)"` : ''}
                     ontouchstart="handleTouchStart(event, ${i})"
                     ontouchend="handleTouchEnd(event, ${i})">
                     ${sound.emoji}
@@ -4413,6 +4417,8 @@
 
         // Handle sound button click - play or edit depending on mode
         function handleSoundClick(index, btn) {
+            // Skip if already handled by touch event (prevents double-fire on mobile)
+            if (touchHandled) return;
             const soundInfo = soundCategories[currentCategory].sounds[index];
             lastSelectedSound = soundInfo; // Track for Beat Maker tap-to-add
             if (editMode) {
@@ -4425,6 +4431,8 @@
         // Long press for touch devices - opens FX panel for editing
         let touchTimer = null;
         let touchStartTime = 0;
+        let touchHandled = false; // Prevents onclick from double-firing after touch
+
         function handleTouchStart(event, index) {
             // Unlock audio on iOS/tablets immediately on touch
             initAudio();
@@ -4437,7 +4445,11 @@
                 const soundInfo = soundCategories[currentCategory].sounds[index];
                 openFxPanel(soundInfo);
                 touchTimer = null;
+                touchHandled = true;
+                setTimeout(() => { touchHandled = false; }, 400);
             }, 500);
+            // Prevent click from firing after touch on mobile
+            event.preventDefault();
         }
 
         function handleTouchEnd(event, index) {
@@ -4458,8 +4470,10 @@
                 } else {
                     playSound(soundInfo, btn);
                 }
-                event.preventDefault();
             }
+            touchHandled = true;
+            setTimeout(() => { touchHandled = false; }, 400);
+            event.preventDefault();
         }
 
         // State
@@ -4595,6 +4609,9 @@
 
         // Audio Init
         async function initAudio() {
+            // Create synths synchronously on first user gesture (before any await)
+            // This ensures synths are available immediately for play functions
+            initSynths();
             if (isAudioInitialized) return;
             try {
                 await Tone.start();
@@ -4603,49 +4620,56 @@
                 analyser.fftSize = 256;
                 Tone.getDestination().connect(analyser);
                 isAudioInitialized = true;
+                // Also unlock Howler audio context for Freesound playback
+                if (Howler.ctx && Howler.ctx.state === 'suspended') {
+                    Howler.ctx.resume();
+                }
             } catch (e) { console.error('Audio init failed:', e); }
         }
 
         document.addEventListener('click', initAudio, { once: true });
         document.addEventListener('touchstart', initAudio, { once: true });
 
-        // Synths
-        const synths = {
-            piano: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'triangle' }, envelope: { attack: 0.02, decay: 0.3, sustain: 0.2, release: 1 } }).toDestination(),
-            xylophone: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 0.5, sustain: 0, release: 0.5 } }).toDestination(),
-            guitar: new Tone.PluckSynth({ attackNoise: 1, dampening: 4000, resonance: 0.98 }).toDestination(),
-            bells: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 1.5, sustain: 0, release: 1.5 } }).toDestination(),
-            bass: new Tone.MonoSynth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.05, decay: 0.3, sustain: 0.4, release: 0.8 }, filterEnvelope: { attack: 0.05, decay: 0.2, sustain: 0.5, release: 0.8, baseFrequency: 200, octaves: 2.5 } }).toDestination(),
-            synthPad: new Tone.PolySynth(Tone.FMSynth, { harmonicity: 3, modulationIndex: 10, envelope: { attack: 0.2, decay: 0.3, sustain: 0.8, release: 1.5 } }).toDestination(),
-            // New creative instruments
-            harp: new Tone.PluckSynth({ attackNoise: 0.5, dampening: 2000, resonance: 0.99 }).toDestination(),
-            kalimba: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 2, sustain: 0, release: 2 } }).toDestination(),
-            steelDrum: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'triangle' }, envelope: { attack: 0.01, decay: 0.8, sustain: 0.1, release: 1 } }).toDestination(),
-            organ: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'square' }, envelope: { attack: 0.05, decay: 0.1, sustain: 0.9, release: 0.5 } }).toDestination(),
-            marimba: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 1, sustain: 0, release: 1 } }).toDestination(),
-            flute: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.1, decay: 0.1, sustain: 0.8, release: 0.3 } }).toDestination(),
-            chimes: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 3, sustain: 0, release: 3 } }).toDestination(),
-            trumpet: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sawtooth' }, envelope: { attack: 0.05, decay: 0.2, sustain: 0.8, release: 0.3 } }).toDestination(),
-            drums: {
-                kick: new Tone.MembraneSynth().toDestination(),
-                snare: new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.005, decay: 0.2, sustain: 0 } }).toDestination(),
-                hihat: new Tone.MetalSynth({ frequency: 200, envelope: { attack: 0.001, decay: 0.1, release: 0.01 }, harmonicity: 5.1, modulationIndex: 32, resonance: 4000, octaves: 1.5 }).toDestination(),
-                tom: new Tone.MembraneSynth({ pitchDecay: 0.05, octaves: 4 }).toDestination(),
-                clap: new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.005, decay: 0.15, sustain: 0 } }).toDestination()
-            },
-            fx: {
-                sine: new Tone.Synth({ oscillator: { type: 'sine' } }).toDestination(),
-                saw: new Tone.Synth({ oscillator: { type: 'sawtooth' } }).toDestination(),
-                square: new Tone.Synth({ oscillator: { type: 'square' } }).toDestination(),
-                noise: new Tone.NoiseSynth({ noise: { type: 'brown' } }).toDestination(),
-                whiteNoise: new Tone.NoiseSynth({ noise: { type: 'white' } }).toDestination(),
-                metal: new Tone.MetalSynth().toDestination(),
-                membrane: new Tone.MembraneSynth().toDestination(),
-                poly: new Tone.PolySynth().toDestination(),
-                pluck: new Tone.PluckSynth().toDestination(),
-                fm: new Tone.FMSynth().toDestination()
-            }
-        };
+        // Synths - lazy initialized on first user interaction to avoid AudioContext warnings
+        let synths = null;
+        function initSynths() {
+            if (synths) return;
+            synths = {
+                piano: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'triangle' }, envelope: { attack: 0.02, decay: 0.3, sustain: 0.2, release: 1 } }).toDestination(),
+                xylophone: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 0.5, sustain: 0, release: 0.5 } }).toDestination(),
+                guitar: new Tone.PluckSynth({ attackNoise: 1, dampening: 4000, resonance: 0.98 }).toDestination(),
+                bells: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 1.5, sustain: 0, release: 1.5 } }).toDestination(),
+                bass: new Tone.MonoSynth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.05, decay: 0.3, sustain: 0.4, release: 0.8 }, filterEnvelope: { attack: 0.05, decay: 0.2, sustain: 0.5, release: 0.8, baseFrequency: 200, octaves: 2.5 } }).toDestination(),
+                synthPad: new Tone.PolySynth(Tone.FMSynth, { harmonicity: 3, modulationIndex: 10, envelope: { attack: 0.2, decay: 0.3, sustain: 0.8, release: 1.5 } }).toDestination(),
+                harp: new Tone.PluckSynth({ attackNoise: 0.5, dampening: 2000, resonance: 0.99 }).toDestination(),
+                kalimba: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 2, sustain: 0, release: 2 } }).toDestination(),
+                steelDrum: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'triangle' }, envelope: { attack: 0.01, decay: 0.8, sustain: 0.1, release: 1 } }).toDestination(),
+                organ: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'square' }, envelope: { attack: 0.05, decay: 0.1, sustain: 0.9, release: 0.5 } }).toDestination(),
+                marimba: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 1, sustain: 0, release: 1 } }).toDestination(),
+                flute: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.1, decay: 0.1, sustain: 0.8, release: 0.3 } }).toDestination(),
+                chimes: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 3, sustain: 0, release: 3 } }).toDestination(),
+                trumpet: new Tone.PolySynth(Tone.Synth, { oscillator: { type: 'sawtooth' }, envelope: { attack: 0.05, decay: 0.2, sustain: 0.8, release: 0.3 } }).toDestination(),
+                drums: {
+                    kick: new Tone.MembraneSynth().toDestination(),
+                    snare: new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.005, decay: 0.2, sustain: 0 } }).toDestination(),
+                    hihat: new Tone.MetalSynth({ frequency: 200, envelope: { attack: 0.001, decay: 0.1, release: 0.01 }, harmonicity: 5.1, modulationIndex: 32, resonance: 4000, octaves: 1.5 }).toDestination(),
+                    tom: new Tone.MembraneSynth({ pitchDecay: 0.05, octaves: 4 }).toDestination(),
+                    clap: new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.005, decay: 0.15, sustain: 0 } }).toDestination()
+                },
+                fx: {
+                    sine: new Tone.Synth({ oscillator: { type: 'sine' } }).toDestination(),
+                    saw: new Tone.Synth({ oscillator: { type: 'sawtooth' } }).toDestination(),
+                    square: new Tone.Synth({ oscillator: { type: 'square' } }).toDestination(),
+                    noise: new Tone.NoiseSynth({ noise: { type: 'brown' } }).toDestination(),
+                    whiteNoise: new Tone.NoiseSynth({ noise: { type: 'white' } }).toDestination(),
+                    metal: new Tone.MetalSynth().toDestination(),
+                    membrane: new Tone.MembraneSynth().toDestination(),
+                    poly: new Tone.PolySynth().toDestination(),
+                    pluck: new Tone.PluckSynth().toDestination(),
+                    fm: new Tone.FMSynth().toDestination()
+                }
+            };
+        }
 
         // Sound effect functions - SYNTHESIZED sounds (not recordings!)
         const effectFns = {
